@@ -20,6 +20,15 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('image_pass')->nullable();
+            $table->integer('age')->nullable();
+            $table->integer('sex')->nullable();
+            $table->string('insurance_compnay')->nullable();
+            $table->boolean('spouse')->nullable();
+            $table->integer('children')->nullable();
+            $table->integer('house_type')->nullable();
+            $table->integer('pref')->nullable();
+            $table->string('free_comment')->nullable();
         });
     }
 
