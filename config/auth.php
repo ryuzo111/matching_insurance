@@ -1,6 +1,6 @@
 <?php
 
-return [
+$authConf = [
 
     /*
     |--------------------------------------------------------------------------
@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'user',
         'passwords' => 'users',
     ],
 
@@ -117,3 +117,15 @@ return [
     ],
 
 ];
+
+$uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+
+// 管理者側の認証ガード設定
+if (strstr($uri, '/admin/') !== false || $uri === '/admin/login') {
+	    $authConf['defaults'] = [
+		    'guard' => 'admin',
+			'passwords' => 'admins',
+       ];
+}
+
+return $authConf;
