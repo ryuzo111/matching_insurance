@@ -19,9 +19,9 @@ class CreateInterestedInsurancesTable extends Migration
             $table->boolean('interested_life')->nullable();
             $table->boolean('interested_medical')->nullable();
             $table->boolean('interested_cancer')->nullable();
-            $table->boolean('interesetd_pension')->nullable();
-            $table->boolean('interesetd_saving')->nullable();
-            $table->boolean('interesetd_all_life')->nullable();
+            $table->boolean('interested_pension')->nullable();
+            $table->boolean('interested_saving')->nullable();
+            $table->boolean('interested_all_life')->nullable();
             $table->boolean('interested_home')->nullable();
             $table->boolean('interested_other')->nullable();
         });
