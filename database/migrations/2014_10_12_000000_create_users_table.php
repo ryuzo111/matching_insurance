@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('image_pass')->nullable();
             $table->integer('age')->nullable();
             $table->integer('sex')->nullable();
-            $table->string('insurance_compnay')->nullable();
+            $table->string('insurance_company')->nullable();
             $table->boolean('spouse')->nullable();
             $table->integer('children')->nullable();
             $table->integer('house_type')->nullable();
