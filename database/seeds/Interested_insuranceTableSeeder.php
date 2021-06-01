@@ -13,8 +13,8 @@ class Interested_insuranceTableSeeder extends Seeder
     {
         $param = [
             'post_id' => 1,
-            'interested_medical' => 1,
-            'interested_pension' => 1, 
+            'medical' => 1,
+            'pension' => 1, 
         ];
 
         DB::table('interested_insurances')->insert($param);

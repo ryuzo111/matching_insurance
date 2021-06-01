@@ -16,14 +16,14 @@ class CreateInterestedInsurancesTable extends Migration
         Schema::create('interested_insurances', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id');
-            $table->boolean('interested_life')->nullable();
-            $table->boolean('interested_medical')->nullable();
-            $table->boolean('interested_cancer')->nullable();
-            $table->boolean('interested_pension')->nullable();
-            $table->boolean('interested_saving')->nullable();
-            $table->boolean('interested_all_life')->nullable();
-            $table->boolean('interested_home')->nullable();
-            $table->boolean('interested_other')->nullable();
+            $table->boolean('life')->nullable();
+            $table->boolean('medical')->nullable();
+            $table->boolean('cancer')->nullable();
+            $table->boolean('pension')->nullable();
+            $table->boolean('saving')->nullable();
+            $table->boolean('all_life')->nullable();
+            $table->boolean('home')->nullable();
+            $table->boolean('other')->nullable();
         });
     }
 
