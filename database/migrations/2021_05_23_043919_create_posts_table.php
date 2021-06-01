@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->integer('trouble_type');
-            $table->string('insurance_target');
+            $table->integer('insurance_target');
             $table->string('trouble_content');
             $table->timestamps();
             $table->softDeletes();
