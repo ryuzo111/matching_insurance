@@ -19,6 +19,21 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
+    Route::get('/', 'PostController@index')->name('post.index');
+
+    Route::get('/search', 'PostController@search')->name('post.search');
+
+    Route::get('/create', 'PostController@showCreateForm')->name('post.create');
+    Route::post('/create', 'PostController@create');
+
+    Route::get('/edit/{id}', 'PostController@showEditForm')->name('post.edit');
+    Route::post('/edit/{id}', 'PostController@edit');
+
+    Route::post('/delete/{id}', 'PostController@delete')->name('post.delete');
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
     Route::get('home', 'Admin\HomeController@index')->name('admin.home');
