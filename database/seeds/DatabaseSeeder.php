@@ -16,5 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PostTableSeeder::class);
         $this->call(Family_insuranceTableSeeder::class);
         $this->call(Interested_insuranceTableSeeder::class);
+
+        factory(App\Models\Post::class, 15)->create();
     }
 }
