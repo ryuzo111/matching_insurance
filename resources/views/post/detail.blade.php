@@ -56,7 +56,6 @@
     <p>→悩みに対するコメントの数 : {{ count($post->comments) }}</p>
 </div>
 
-@if (Auth::check())
 @if (!empty($post->comments))
 <p>コメント一覧</p>
 @foreach ($post->comments as $comment)
@@ -70,6 +69,10 @@
 
 </br>
 @endforeach
+@endif
+
+
+@if (Auth::check())
 
 <form action="{{ route('post.comment') }}" method="POST">
     {{ csrf_field() }}
@@ -79,12 +82,11 @@
 </form>
 <br>
 
-@endif
-
-
 @else
+
 <p>コメントするにはログインする必要があります</p>
 <a href="{{ route('login') }}">ログインする</a>
+
 @endif
 
 
