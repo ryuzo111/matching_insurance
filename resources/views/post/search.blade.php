@@ -39,7 +39,7 @@
                     <td>{{ config('insurance_target.' . $post->insurance_target) }}</td>
                     <td>{{ $post->trouble_content }}</td>
                     <td>
-                        @if ($post->interested_insurance['life'])
+                        @if ($post->interested_insurance['life'] === 1)
                            生命保険 
                         @endif
                         @if ($post->interested_insurance['medical'] === 1)

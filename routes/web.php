@@ -17,14 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+/*
+* ログイン前
+*/
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/post', 'PostController@index')->name('post.index');
+Route::get('/post/search', 'PostController@search')->name('post.search');
 
-
+/*
+* ログイン後
+*/
 Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
-    Route::get('/', 'PostController@index')->name('post.index');
-
-    Route::get('/search', 'PostController@search')->name('post.search');
-
     Route::get('/create', 'PostController@showCreateForm')->name('post.create');
     Route::post('/create', 'PostController@create');
 
@@ -34,6 +37,9 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
     Route::post('/delete/{id}', 'PostController@delete')->name('post.delete');
 });
 
+/*
+* Admin
+*/
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
     Route::get('home', 'Admin\HomeController@index')->name('admin.home');
