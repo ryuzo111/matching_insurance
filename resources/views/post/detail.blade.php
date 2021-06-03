@@ -2,19 +2,12 @@
 
 @section('content')
 
-<h1>保険の悩み一覧</h1>
-<form action="{{ route('post.search') }}" method="GET">
-    <input type="text" name="word" value={{ old('word') }}>
-    <input type="submit" value="検索する">
-</form>
-<br>
-
-@foreach ($posts as $post)
+<h1>悩み詳細</h1>
 <div>
     <img src="{{ $post->user->image_pass }}" alt="" width="30">
     <p>
         名前 : {{ $post->user->name }}
-        <a href="{{ route('post.detail', ['post_id' => $post->id]) }}">タイトル : {{ $post->title }}</a>
+        タイトル : {{ $post->title }}
         投稿時間 : {{ $post->created_at }}
     </p>
     <table>
@@ -61,13 +54,30 @@
         </tbody>
     </table>
     <p>→悩みに対するコメントの数 : {{ count($post->comments) }}</p>
-
 </div>
 
-<br>
+@if (!empty($post->comments))
+<p>コメント一覧</p>
+@foreach ($post->comments as $comment)
+
+<img src="{{ $comment->user->image_pass }}" alt="" width="30">
+<p>
+    名前 : {{ $comment->user->name }}
+    コメント時間 : {{ $comment->created_at }}
+</p>
+<p>{{$comment->comment}}</p>
+
+</br>
+@endforeach
+@endif
+
+<form action="{{ route('post.comment') }}" method="POST">
+    {{ csrf_field() }}
+    <input type="hidden" name="post_id" value="{{$post->id}}">
+    <input type="text" name="comment">
+    <input type="submit" value="コメントする">
+</form>
 <br>
 
-@endforeach
-{{ $posts->links() }}
 
 @endsection

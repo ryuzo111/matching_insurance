@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/post', 'PostController@index')->name('post.index');
 Route::get('/post/search', 'PostController@search')->name('post.search');
+Route::get('/post/detail/', 'PostController@detail')->name('post.detail');
 
 /*
 * ログイン後
@@ -35,6 +36,7 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
     Route::post('/edit/{id}', 'PostController@edit');
 
     Route::post('/delete/{id}', 'PostController@delete')->name('post.delete');
+    Route::post('/comment', 'CommentController@comment')->name('post.comment');
 });
 
 /*
