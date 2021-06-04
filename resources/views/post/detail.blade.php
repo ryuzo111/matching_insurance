@@ -26,28 +26,28 @@
                 <td>{{ $post->trouble_content }}</td>
                 <td>
                     @if ($post->interested_insurance['life'] === 1)
-                    生命保険
+                        生命保険
                     @endif
                     @if ($post->interested_insurance['medical'] === 1)
-                    医療保険
+                        医療保険
                     @endif
                     @if ($post->interested_insurance['cancer']=== 1)
-                    がん保険
+                        がん保険
                     @endif
                     @if ($post->interested_insurance['pension'] === 1)
-                    年金保険
+                        年金保険
                     @endif
                     @if ($post->interested_insurance['saving']=== 1)
-                    貯蓄型の保険
+                        貯蓄型の保険
                     @endif
                     @if ($post->interested_insurance['all_life'] === 1)
-                    終身保険
+                        終身保険
                     @endif
                     @if ($post->interested_insurance['home'] === 1)
-                    火災保険
+                        火災保険
                     @endif
                     @if ($post->interested_insurance['other'] === 1)
-                    その他
+                        その他
                     @endif
                 </td>
             </tr>
@@ -57,38 +57,42 @@
 </div>
 
 @if (!empty($post->comments))
-<p>コメント一覧</p>
-@foreach ($post->comments as $comment)
+    <p>コメント一覧</p>
+    @foreach ($post->comments as $comment)
+        <img src="{{ $comment->user->image_pass }}" alt="" width="30">
+        <p>
+            名前 : {{ $comment->user->name }}
+            コメント時間 : {{ $comment->created_at }}
+        </p>
+        <p>{{$comment->comment}}</p>
 
-<img src="{{ $comment->user->image_pass }}" alt="" width="30">
-<p>
-    名前 : {{ $comment->user->name }}
-    コメント時間 : {{ $comment->created_at }}
-</p>
-<p>{{$comment->comment}}</p>
-
-</br>
-@endforeach
+        </br>
+    @endforeach
 @endif
 
 
 @if (Auth::check())
 
-<form action="{{ route('post.comment') }}" method="POST">
-    {{ csrf_field() }}
-    <input type="hidden" name="post_id" value="{{$post->id}}">
-    <input type="text" name="comment">
-    <input type="submit" value="コメントする">
-</form>
-<br>
+    @if ($errors->has('post_id'))
+        <p>{{$errors->first('post_id')}}</p>
+    @endif
+    @if ($errors->has('comment'))
+        <p>{{$errors->first('comment')}}</p>
+    @endif
+
+    <form action="{{ route('post.comment') }}" method="POST">
+        {{ csrf_field() }}
+        <input type="hidden" name="post_id" value="{{$post->id}}">
+        <input type="text" name="comment">
+        <input type="submit" value="コメントする">
+    </form>
+    <br>
 
 @else
 
-<p>コメントするにはログインする必要があります</p>
-<a href="{{ route('login') }}">ログインする</a>
+    <p>コメントするにはログインする必要があります</p>
+    <a href="{{ route('login') }}">ログインする</a>
 
 @endif
-
-
 
 @endsection

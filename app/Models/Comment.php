@@ -22,6 +22,7 @@ class Comment extends Model
         $this->comment = $data->comment;
         $this->post_id = $data->post_id;
         $this->user_id = Auth::id();
-        return $this->save();
+        $this->save();
+        return true;
     }
 }
