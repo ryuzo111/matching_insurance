@@ -33,5 +33,10 @@ class Post extends Model
         $posts = $this->where('title', 'like', '%' . $word . '%')->paginate(10);
         return $posts;
     }
-    
+
+    public function getDetailPost($post_id)
+    {
+        $post = Post::findOrFail($post_id);
+        return $post;
+    }
 }

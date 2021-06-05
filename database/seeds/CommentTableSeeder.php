@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CoommentTableSeeder extends Seeder
+class CommentTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,6 +17,6 @@ class CoommentTableSeeder extends Seeder
             'comment' => '結婚する予定がないなら、将来のために、最低限の終身タイプの医療保障5000円で大丈夫。生命保障は結婚してから考えよう',
         ];
 
-        DB::table('interested_insurances')->insert($param);
+        DB::table('comments')->insert($param);
     }
 }

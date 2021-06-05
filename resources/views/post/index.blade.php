@@ -14,7 +14,7 @@
         <img src="{{ $post->user->image_pass }}" alt="" width="30">
         <p>
             名前 : {{ $post->user->name }}
-            タイトル : {{ $post->title }}
+            <a href="{{ route('post.detail', ['post_id' => $post->id]) }}">タイトル : {{ $post->title }}</a>
             投稿時間 : {{ $post->created_at }}
         </p>
         <table>
@@ -33,40 +33,39 @@
                     <td>{{ $post->trouble_content }}</td>
                     <td>
                         @if ($post->interested_insurance['life'] === 1)
-                           生命保険 
+                            生命保険
                         @endif
                         @if ($post->interested_insurance['medical'] === 1)
-                           医療保険 
+                            医療保険
                         @endif
                         @if ($post->interested_insurance['cancer']=== 1)
-                           がん保険 
+                            がん保険
                         @endif
                         @if ($post->interested_insurance['pension'] === 1)
-                           年金保険 
+                            年金保険
                         @endif
                         @if ($post->interested_insurance['saving']=== 1)
-                           貯蓄型の保険 
+                            貯蓄型の保険
                         @endif
                         @if ($post->interested_insurance['all_life'] === 1)
-                           終身保険 
+                            終身保険
                         @endif
                         @if ($post->interested_insurance['home'] === 1)
-                           火災保険 
+                            火災保険
                         @endif
                         @if ($post->interested_insurance['other'] === 1)
-                           その他 
+                            その他
                         @endif
                     </td>
                 </tr>
             </tbody>
         </table>
         <p>→悩みに対するコメントの数 : {{ count($post->comments) }}</p>
-
     </div>
 
-    <br>
-    <br>
-    
+<br>
+<br>
+
 @endforeach
 {{ $posts->links() }}
 
