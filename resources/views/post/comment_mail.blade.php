@@ -60,7 +60,7 @@
 </p>
 <p>{{$comment->comment}}</p>
 </br>
-<a href="{{ route('login') }}">コメントの詳細はログインしてご確認ください</a>
+<a href="{{ route('login') }}">ログインはこちら</a>
 
 
 

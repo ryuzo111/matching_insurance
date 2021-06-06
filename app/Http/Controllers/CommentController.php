@@ -30,8 +30,8 @@ class CommentController extends Controller
 
     public function delete(Request $request)
     {
-        $this->comment->deleteComment($request->input('comment_id'));
         $comment_data = $this->comment->getCommentData($request->input('comment_id'));
+        $this->comment->deleteComment($request->input('comment_id'));
         return redirect()->route('post.detail', ['post_id' => $comment_data->post_id]);
     }
 
