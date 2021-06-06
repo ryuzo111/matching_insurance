@@ -28,7 +28,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ route('post.index') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>

@@ -107,7 +107,7 @@ class PostController extends Controller
         //
     }
 
-    public function detail(Request $request) 
+    public function detail(Request $request)
     {
         $post = $this->post->getDetailPost($request->input('post_id'));
         return view('post/detail', compact('post'));

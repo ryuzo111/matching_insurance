@@ -15,7 +15,7 @@ class CreateGoodsTable extends Migration
     {
         Schema::create('goods', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id');
+            $table->integer('comment_id');
             $table->integer('user_id');
             $table->timestamps();
             $table->softDeletes();

@@ -17,12 +17,36 @@ class Comment extends Model
         return $this->belongsTo('App\Models\Post');
     }
 
+    public function good()
+    {
+        return $this->hasMany('App\Models\Good', 'comment_id', 'id');
+    }
+
     public function saveComment($data)
     {
         $this->comment = $data->comment;
         $this->post_id = $data->post_id;
         $this->user_id = Auth::id();
         $this->save();
+        return $this->id;
+    }
+
+    public function deleteComment($comment_id)
+    {
+        $this->findOrFail($comment_id)->delete();
+        return true;
+    }
+
+    public function getCommentData($comment_id)
+    {
+        $comment = $this->findOrFail($comment_id);
+        return $comment;
+    }
+    public function editComment($comment_data)
+    {
+        $comment = $this->getCommentData($comment_data->comment_id);
+        $comment->comment = $comment_data->comment;
+        $comment->save();
         return true;
     }
 }
