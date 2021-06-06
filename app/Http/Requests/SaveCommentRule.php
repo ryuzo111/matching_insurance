@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CommentRequest extends FormRequest
+class SaveCommentRule extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,8 @@ class CommentRequest extends FormRequest
             'comment' => ['required', 'max:190'],
         ];
     }
-    public function messages() {
+    public function messages()
+    {
         return [
             'post_id.required' => 'エラーです',
             'post_id.exists' => 'エラーです',

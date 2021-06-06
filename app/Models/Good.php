@@ -12,7 +12,7 @@ class Good extends Model
         return $this->belongsTo('App\Models\Comment');
     }
 
-    public function saveGood($comment_id)
+    public function saveGoodByCommentId($comment_id)
     {
         $this->comment_id = $comment_id;
         $this->user_id = Auth::id();
@@ -20,7 +20,7 @@ class Good extends Model
         return true;
     }
 
-    public function deleteGood($comment_id)
+    public function deleteGoodByCommentId($comment_id)
     {
         if ($this->where('comment_id', $comment_id)->where('user_id', Auth::id())->exists()) {
             $this->where('comment_id', $comment_id)->where('user_id', Auth::id())->delete();

@@ -63,7 +63,7 @@
         @if ($comment->user_id === Auth::id()) 
             <a href="{{route('comment.delete', ['comment_id' => $comment->id])}}">削除する</a>
             <a href="{{route('comment.edit_form', ['comment_id' => $comment->id])}}">編集する</a>
-        @elseif ($comment->good->contains('user_id', Auth::id()))
+        @elseif ($comment->goods->contains('user_id', Auth::id()))
             <a href="{{route('comment.delete_good', ['comment_id' => $comment->id])}}">いいね済み</a> 
         @elseif (Auth::check()) 
             <a href="{{route('comment.good', ['comment_id' => $comment->id])}}">いいね</a>
@@ -76,7 +76,7 @@
             コメント時間 : {{ $comment->created_at }}
         </p>
         <p>{{$comment->comment}}</p>
-        <p>→いいね数 : {{count($comment->good)}}
+        <p>→いいね数 : {{count($comment->goods)}}
 
         </br>
         </br>

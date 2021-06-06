@@ -17,7 +17,7 @@ class Comment extends Model
         return $this->belongsTo('App\Models\Post');
     }
 
-    public function good()
+    public function goods()
     {
         return $this->hasMany('App\Models\Good', 'comment_id', 'id');
     }
@@ -31,20 +31,20 @@ class Comment extends Model
         return $this->id;
     }
 
-    public function deleteComment($comment_id)
+    public function deleteCommentById($comment_id)
     {
         $this->findOrFail($comment_id)->delete();
         return true;
     }
 
-    public function getCommentData($comment_id)
+    public function getCommentById($comment_id)
     {
         $comment = $this->findOrFail($comment_id);
         return $comment;
     }
     public function editComment($comment_data)
     {
-        $comment = $this->getCommentData($comment_data->comment_id);
+        $comment = $this->getCommentById($comment_data->comment_id);
         $comment->comment = $comment_data->comment;
         $comment->save();
         return true;
