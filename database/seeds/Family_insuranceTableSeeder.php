@@ -20,5 +20,15 @@ class Family_insuranceTableSeeder extends Seeder
         ];
 
         DB::table('family_insurances')->insert($param);
+
+        $param = [
+            'user_id' => 1,
+            'age' => 24,
+            'relationship' => 2,
+            'have_insurance_company' => 'ABC保険',
+            'have_insurance_content' => '帝王切開時50万',
+        ];
+
+        DB::table('family_insurances')->insert($param);
     }
 }
