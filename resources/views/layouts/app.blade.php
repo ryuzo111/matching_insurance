@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -71,8 +72,13 @@
             </div>
         </nav>
 
+        @if (session('flash_message'))
+            <div class="flash_message" style="color:red">{{ session('flash_message') }}</div>
+        @endif
+
         @yield('content')
     </div>
+   
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

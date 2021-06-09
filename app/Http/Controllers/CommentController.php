@@ -31,17 +31,17 @@ class CommentController extends Controller
 
     public function delete(Request $request)
     {
-        $comment_data = $this->comment->getCommentById($request->input('comment_id'));
+        $comment = $this->comment->getCommentById($request->input('comment_id'));
         $this->comment->deleteCommentById($request->input('comment_id'));
         session()->flash('flash_message', 'コメントを削除しました');
-        return redirect()->route('post.detail', ['post_id' => $comment_data->post_id]);
+        return redirect()->route('post.detail', ['post_id' => $comment->post_id]);
     }
 
     public function editForm(Request $request)
     {
-        $comment_data = $this->comment->getCommentById($request->input('comment_id'));
-        $post = $this->post->getDetailPostById($comment_data->post_id);
-        return view('post/comment_edit', compact('post', 'comment_data'));
+        $target_comment = $this->comment->getCommentById($request->input('comment_id'));
+        $post = $this->post->getDetailPostById($target_comment->post_id);
+        return view('post/comment_edit', compact('post', 'target_comment'));
     }
 
     public function edit(EditCommentRule $request)
@@ -67,7 +67,7 @@ class CommentController extends Controller
 
     public function redirectDetailByCommentId($comment_id)
     {
-        $comment_data = $this->comment->getCommentById($comment_id);
-        return redirect()->route('post.detail', ['post_id' => $comment_data->post_id]);
+        $comment = $this->comment->getCommentById($comment_id);
+        return redirect()->route('post.detail', ['post_id' => $comment->post_id]);
     }
 }

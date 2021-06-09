@@ -31,8 +31,8 @@ class EditCommentRule extends FormRequest
     public function messages()
     {
         return [
-            'comment_id.required' => 'エラーです',
-            'comment_id.exists' => 'エラーです',
+            'comment_id.required' => 'コメントが見つかりません',
+            'comment_id.exists' => 'コメントが見つかりません',
             'comment.required' => 'コメントを入力してください',
             'comment.max' => 'コメントは190文字以内でお願いいたします',
         ];

@@ -2,9 +2,7 @@
 
 @section('content')
 
-@if (session('flash_message'))
-    <div class="flash_message" style="color:red">{{ session('flash_message') }}</div>
-@endif
+
 
 <h1>悩み詳細</h1>
 <div>

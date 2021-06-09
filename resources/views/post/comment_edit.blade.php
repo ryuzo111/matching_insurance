@@ -64,7 +64,7 @@
             名前 : {{ $comment->user->name }}
             コメント時間 : {{ $comment->created_at }}
         </p>
-        @if ($comment->id === $comment_data->id)
+        @if ($comment->id === $target_comment->id)
 
             @if ($errors->has('comment_id'))
                 <p>{{$errors->first('comment_id')}}</p>

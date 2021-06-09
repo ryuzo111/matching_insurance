@@ -31,8 +31,8 @@ class SaveCommentRule extends FormRequest
     public function messages()
     {
         return [
-            'post_id.required' => 'エラーです',
-            'post_id.exists' => 'エラーです',
+            'post_id.required' => 'コメントする投稿が見つかりません',
+            'post_id.exists' => 'コメントする投稿が見つかりません',
             'comment.required' => 'コメントを入力してください',
             'comment.max' => 'コメントは190文字以内でお願いいたします',
         ];

@@ -42,11 +42,11 @@ class Comment extends Model
         $comment = $this->findOrFail($comment_id);
         return $comment;
     }
-    public function editComment($comment_data)
+    public function editComment($comment)
     {
-        $comment = $this->getCommentById($comment_data->comment_id);
-        $comment->comment = $comment_data->comment;
-        $comment->save();
+        $target_comment = $this->getCommentById($comment->comment_id);
+        $target_comment->comment = $comment->comment;
+        $target_comment->save();
         return true;
     }
 }
