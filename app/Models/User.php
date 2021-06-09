@@ -38,7 +38,7 @@ class User extends Authenticatable {
         return $this->hasMany('App\Models\Relationship', 'followed_id');
     }
 
-	public function getDetail($id)
+	public function getDetailById($id)
 	{
 		$user = $this->where('id', $id)->firstOrFail();
 		return $user;

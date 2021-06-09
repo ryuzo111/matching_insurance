@@ -23,7 +23,7 @@ class ProfileController extends Controller
     }
 
 	public function detail($id) {
-		$user = $this->user->getDetail($id);
+		$user = $this->user->getDetailById($id);
 		return view('profile.detail', compact('user'));
 	}
 
