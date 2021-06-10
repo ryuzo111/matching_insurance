@@ -6,7 +6,7 @@
 <div>
     <img src="{{ $post->user->image_pass }}" alt="" width="30">
     <p>
-        名前 : {{ $post->user->name }}
+        名前 : <a href="{{ route('profile', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a>
         タイトル : {{ $post->title }}
         投稿時間 : {{ $post->created_at }}
     </p>
