@@ -26,7 +26,7 @@ class Good extends Model
             $this->where('comment_id', $comment_id)->where('user_id', Auth::id())->delete();
             return true;
         } else {
-            abort(403, '権限がありません');
+            return false;
         }
     }
 }

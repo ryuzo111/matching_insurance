@@ -25,7 +25,7 @@ class CommentController extends Controller
         $comment_id = $this->comment->saveComment($request);
         $comment_data = $this->comment->getCommentById($comment_id);
         Mail::send(new CommentNotification($comment_data));
-        session()->flash('flash_message', 'コメントを投稿しました');
+        session()->flash('success', 'コメントを投稿しました');
         return redirect()->route('post.detail', ['post_id' => $request->input('post_id')]);
     }
 
@@ -33,7 +33,7 @@ class CommentController extends Controller
     {
         $comment = $this->comment->getCommentById($request->input('comment_id'));
         $this->comment->deleteCommentById($request->input('comment_id'));
-        session()->flash('flash_message', 'コメントを削除しました');
+        session()->flash('success', 'コメントを削除しました');
         return redirect()->route('post.detail', ['post_id' => $comment->post_id]);
     }
 
@@ -47,22 +47,27 @@ class CommentController extends Controller
     public function edit(EditCommentRule $request)
     {
         $this->comment->editComment($request);
-        session()->flash('flash_message', 'コメントを編集しました');
+        session()->flash('success', 'コメントを編集しました');
         return $this->redirectDetailByCommentId($request->input('comment_id'));
     }
 
     public function good(Request $request)
     {
         $this->good->saveGoodByCommentId($request->input('comment_id'));
-        session()->flash('flash_message', 'コメントにいいねしました');
+        session()->flash('success', 'コメントにいいねしました');
         return $this->redirectDetailByCommentId($request->input('comment_id'));
     }
 
     public function deleteGood(Request $request)
     {
-        $this->good->deleteGoodByCommentId($request->input('comment_id'));
-        session()->flash('flash_message', 'コメントのいいねを取り消しました');
-        return $this->redirectDetailByCommentId($request->input('comment_id'));
+        $result = $this->good->deleteGoodByCommentId($request->input('comment_id'));
+        if ($result === true) {
+            session()->flash('success', 'コメントのいいねを取り消しました');
+            return $this->redirectDetailByCommentId($request->input('comment_id'));
+        } else {
+            session()->flash('error', '権限がありません');
+            return back();
+        }
     }
 
     public function redirectDetailByCommentId($comment_id)

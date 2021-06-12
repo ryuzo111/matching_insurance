@@ -72,8 +72,12 @@
             </div>
         </nav>
 
-        @if (session('flash_message'))
-            <div class="flash_message" style="color:red">{{ session('flash_message') }}</div>
+        @if (session('success'))
+            <div class="success" style="color:blue">{{ session('success') }}</div>
+        @endif
+
+        @if (session('error'))
+            <div class="error" style="color:red">{{ session('error') }}</div>
         @endif
 
         @yield('content')
