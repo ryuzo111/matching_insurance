@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/post', 'PostController@index')->name('post.index');
 Route::get('/post/search', 'PostController@search')->name('post.search');
 Route::get('/post/detail/', 'PostController@detail')->name('post.detail');
+Route::get('/profile/{id}', 'ProfileController@detail')->name('profile');
 
 /*
 * ログイン後

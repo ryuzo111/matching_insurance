@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         factory(App\Models\Post::class, 15)->create();
         factory(App\Models\Comment::class, 15)->create();
         factory(App\Models\Good::class, 15)->create();
+        factory(App\Models\Relationship::class, 15)->create();
     }
 }
