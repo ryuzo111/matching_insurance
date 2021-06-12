@@ -21,4 +21,10 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getMainAdmin()
+    {
+        $main_admin = $this->findOrFail(1);
+        return $main_admin;
+    }
 }
