@@ -9,7 +9,6 @@ class Contact extends Model
 {
     public function saveContact($request)
     {
-
         if (Auth::check()) {
             $user = Auth::user();
             $this->email = $user->email;
