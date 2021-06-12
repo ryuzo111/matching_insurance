@@ -37,7 +37,15 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
     Route::post('/edit/{id}', 'PostController@edit');
 
     Route::post('/delete/{id}', 'PostController@delete')->name('post.delete');
-    Route::post('/comment', 'CommentController@comment')->name('post.comment');
+
+    Route::group(['prefix' => 'comment', 'middleware' => 'auth:user'], function () {
+        Route::post('/', 'CommentController@comment')->name('post.comment');
+        Route::get('/delete', 'CommentController@delete')->name('comment.delete');
+        Route::get('/edit', 'CommentController@editForm')->name('comment.edit_form');
+        Route::post('/edit', 'CommentController@edit')->name('comment.edit');
+        Route::get('/good', 'CommentController@good')->name('comment.good');
+        Route::get('/good/delete', 'CommentController@deleteGood')->name('comment.delete_good');
+    });
 });
 
 /*

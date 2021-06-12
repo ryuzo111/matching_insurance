@@ -2,13 +2,11 @@
 
 @section('content')
 
-
-
 <h1>悩み詳細</h1>
 <div>
     <img src="{{ $post->user->image_pass }}" alt="" width="30">
     <p>
-        名前 : <a href="{{ route('profile', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a>
+        名前 : {{ $post->user->name }}
         タイトル : {{ $post->title }}
         投稿時間 : {{ $post->created_at }}
     </p>
@@ -61,51 +59,32 @@
 @if (!empty($post->comments))
     <p>コメント一覧</p>
     @foreach ($post->comments as $comment)
-
-        @if ($comment->user_id === Auth::id()) 
-            <a href="{{route('comment.delete', ['comment_id' => $comment->id])}}">削除する</a>
-            <a href="{{route('comment.edit_form', ['comment_id' => $comment->id])}}">編集する</a>
-        @elseif ($comment->goods->contains('user_id', Auth::id()))
-            <a href="{{route('comment.delete_good', ['comment_id' => $comment->id])}}">いいね済み</a> 
-        @elseif (Auth::check()) 
-            <a href="{{route('comment.good', ['comment_id' => $comment->id])}}">いいね</a>
-            
-        @endif
-
         <img src="{{ $comment->user->image_pass }}" alt="" width="30">
         <p>
             名前 : {{ $comment->user->name }}
             コメント時間 : {{ $comment->created_at }}
         </p>
-        <p>{{$comment->comment}}</p>
-        <p>→いいね数 : {{count($comment->goods)}}
+        @if ($comment->id === $target_comment->id)
 
-        </br>
+            @if ($errors->has('comment_id'))
+                <p>{{$errors->first('comment_id')}}</p>
+            @endif
+            @if ($errors->has('comment'))
+                <p>{{$errors->first('comment')}}</p>
+            @endif
+
+            <form action="{{route('comment.edit')}}" method="POST">
+                {{ csrf_field() }}
+                <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                <input type="text" name="comment" value="{{$comment->comment}}">
+                <input type="submit" value="コメントを編集する">
+            </form>
+        @else 
+            <p>{{$comment->comment}}</p>
+        @endif
         </br>
     @endforeach
 @endif
 
-
-@if (Auth::check())
-
-    @if ($errors->has('post_id'))
-        <p>{{$errors->first('post_id')}}</p>
-    @endif
-    @if ($errors->has('comment'))
-        <p>{{$errors->first('comment')}}</p>
-    @endif
-
-    <form action="{{ route('post.comment') }}" method="POST">
-        {{ csrf_field() }}
-        <input type="hidden" name="post_id" value="{{$post->id}}">
-        <input type="text" name="comment">
-        <input type="submit" value="コメントする">
-    </form>
-    <br>
-
-@else
-    <p>コメントするにはログインする必要があります</p>
-    <a href="{{ route('login') }}">ログインする</a>
-@endif
 
 @endsection

@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -28,7 +29,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ route('post.index') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -71,8 +72,17 @@
             </div>
         </nav>
 
+        @if (session('success'))
+            <div class="success" style="color:blue">{{ session('success') }}</div>
+        @endif
+
+        @if (session('error'))
+            <div class="error" style="color:red">{{ session('error') }}</div>
+        @endif
+
         @yield('content')
     </div>
+   
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
