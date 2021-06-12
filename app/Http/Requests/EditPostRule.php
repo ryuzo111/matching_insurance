@@ -38,12 +38,12 @@ class EditPostRule extends FormRequest
             'title.required' => '「タイトル」は入力必須です。',
 
             'trouble_type.required' => '「悩みのタイプ」は入力必須です。',
-            'trouble_type.min.max.integer' => '「悩みのタイプ」に不正な値が入力されました。',
+            'trouble_type.min' => '「悩みのタイプ」に不正な値が入力されました。',
             'trouble_type.max' => '「悩みのタイプ」に不正な値が入力されました。',
             'trouble_type.integer' => '「悩みのタイプ」に不正な値が入力されました。',
 
             'insurance_target.required' => '「誰に対する悩み？」は入力必須です。',
-            'insurance_target.min.max.integer' => '「誰に対する悩み？」に不正な値が入力されました。',
+            'insurance_target.min' => '「誰に対する悩み？」に不正な値が入力されました。',
             'insurance_target.max' => '「誰に対する悩み？」に不正な値が入力されました。',
             'insurance_target.integer' => '「誰に対する悩み？」に不正な値が入力されました。',
 

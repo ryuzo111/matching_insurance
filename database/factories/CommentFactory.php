@@ -39,9 +39,5 @@ $factory->define(App\Models\Comment::class, function (Faker $faker) {
     },
     'comment' => $faker->text,
     ];
-
-    Log::debug('commetnファクトリの中↓');
-    Log::debug($arr);
-
     return $arr;
 });

@@ -36,7 +36,7 @@
         <input type="radio" name="insurance_target" value="9" {{ old('insurance_target') == 9  ? 'checked' : ''}}>その他
     </div>
     <div>
-        <label>興味のある保険</label>
+        <label>興味のある保険(複数回答可)</label>
         <input type="checkbox" name="interested_insurances[]" value="life" {{ is_array(old('interested_insurances')) && in_array('life', old('interested_insurances')) ? 'checked' : ''}}>生命保険
         <input type="checkbox" name="interested_insurances[]" value="medical" {{ is_array(old('interested_insurances')) && in_array('medical', old('interested_insurances')) ? 'checked' : ''}}>医療保険
         <input type="checkbox" name="interested_insurances[]" value="cancer" {{ is_array(old('interested_insurances')) && in_array('cancer', old('interested_insurances')) ? 'checked' : ''}}>がん保険
