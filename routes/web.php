@@ -30,13 +30,13 @@ Route::get('/profile/{id}', 'ProfileController@detail')->name('profile');
 * ログイン後
 */
 Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
-    Route::get('/create', 'PostController@showCreateForm')->name('post.create');
-    Route::post('/create', 'PostController@create');
+    Route::get('/create', 'PostController@create')->name('post.create');
+    Route::post('/create', 'PostController@store');
 
-    Route::get('/edit/{id}', 'PostController@showEditForm')->name('post.edit');
-    Route::post('/edit/{id}', 'PostController@edit');
+    Route::get('/edit/{post}', 'PostController@edit')->name('post.edit');
+    Route::post('/edit/{post}', 'PostController@update');
 
-    Route::post('/delete/{id}', 'PostController@delete')->name('post.delete');
+    Route::post('/delete/{post}', 'PostController@delete')->name('post.delete');
 
     Route::group(['prefix' => 'comment', 'middleware' => 'auth:user'], function () {
         Route::post('/', 'CommentController@comment')->name('post.comment');
