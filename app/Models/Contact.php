@@ -9,6 +9,10 @@ class Contact extends Model
 {
     public function saveContact($request)
     {
+        if (empty($reqeust->input('email'))) {
+            return false;
+        }
+
         if (Auth::check()) {
             $user = Auth::user();
             $this->email = $user->email;
