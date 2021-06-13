@@ -26,14 +26,14 @@ class ContactController extends Controller
 
     public function contact(SaveContactRule $request)
     {
-        $save_email = $this->contact->saveContact($request);
-        if ($save_email === false) {
+        $user_email = $this->contact->saveContact($request);
+        if ($user_email === false) {
             session()->flash('error', 'メールアドレスを入力してください');
             return back();
         } else {
             $main_admin = $this->admin->getMainAdmin();
-            Mail::send(new ContactAdmin($request->input('content'), $main_admin->email, $save_email));
-            Mail::send(new ContactUser($request->input('content'), $save_email));
+            Mail::send(new ContactAdmin($request->input('content'), $main_admin->email, $user_email));
+            Mail::send(new ContactUser($request->input('content'), $user_email));
             session()->flash('success', 'お問い合わせありがとうございます');
             return view('contact.contact');
         }
