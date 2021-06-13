@@ -5,8 +5,7 @@
 
 
 <h1>悩み詳細</h1>
-<div>
-    <img src="{{ $post->user->image_pass }}" alt="" width="30">
+<div><img src="{{ $post->user->image_pass }}" alt="" width="30">
     <p>
         名前 : <a href="{{ route('profile', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a>
         タイトル : {{ $post->title }}
@@ -57,6 +56,14 @@
     </table>
     <p>→悩みに対するコメントの数 : {{ count($post->comments) }}</p>
 </div>
+
+@if ($post->user_id == Auth::id())
+    <a href="{{ route('post.edit', ['post' => $post]) }}">編集</a>
+    <form method="post" action="{{ route('post.delete', ['post' => $post]) }}">
+        {{ csrf_field() }}
+        <input type="submit" value="削除">
+    </form>
+@endif
 
 @if (!empty($post->comments))
     <p>コメント一覧</p>

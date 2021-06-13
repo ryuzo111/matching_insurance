@@ -24,6 +24,8 @@ class CreateInterestedInsurancesTable extends Migration
             $table->boolean('all_life')->nullable();
             $table->boolean('home')->nullable();
             $table->boolean('other')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
