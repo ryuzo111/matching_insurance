@@ -26,7 +26,7 @@ class ContactController extends Controller
 
     public function contact(SaveContactRule $request)
     {
-        $user_email = $this->contact->saveContact($request);
+        $user_email = $this->contact->saveContact($request); //saveContact()は未ログイン者かつ、メールアドレス未入力の場合はfalseを返す。成功時はメールアドレスを返す
         if ($user_email === false) {
             session()->flash('error', 'メールアドレスを入力してください');
             return back();
@@ -35,7 +35,7 @@ class ContactController extends Controller
             Mail::send(new ContactAdmin($request->input('content'), $main_admin->email, $user_email));
             Mail::send(new ContactUser($request->input('content'), $user_email));
             session()->flash('success', 'お問い合わせありがとうございます');
-            return view('contact.contact');
+            return redirect()->route('post.index');
         }
     }
 }
