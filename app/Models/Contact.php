@@ -9,7 +9,7 @@ class Contact extends Model
 {
     public function saveContact($request)
     {
-        if (empty($reqeust->input('email'))) {
+        if (empty($request->input('email'))) {
             return false;
         }
 
