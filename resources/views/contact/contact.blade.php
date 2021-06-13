@@ -5,7 +5,6 @@
 <h1>お問い合わせ</h1>
 
 {{ Form::open(['url' => route('contact.contact'), 'method' => 'POST']) }}
-{{ Form::token() }}
 	@guest
 		@if ($errors->has('email'))
 			<p>{{$errors->first('email')}}</p>
