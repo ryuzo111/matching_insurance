@@ -9,14 +9,14 @@ class Contact extends Model
 {
     public function saveContact($request)
     {
-        if (empty($request->input('email'))) {
-            return false;
-        }
 
         if (Auth::check()) {
             $user = Auth::user();
             $this->email = $user->email;
         } else {
+            if (empty($request->input('email'))) {
+                return false;
+            }
             $this->email = $request->input('email');
         }
 
