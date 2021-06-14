@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Profile')
 @section('content')
-@if (session('message'))
-	{{ session('message') }}
-@endif
 @if ($errors->any())
 	@foreach ($errors->all() as $error)
 		<p class="text-danger">{{ $error }}</p>

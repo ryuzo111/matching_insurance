@@ -20,7 +20,7 @@ class EditProfileRule extends FormRequest
 				Rule::unique('users')->ignore($this->id),
 			],
             'image' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg', 'max:5120'],
-            'age' => ['nullable', 'between:0,125'],
+            'age' => ['nullable', 'integer', 'between:0,125'],
 			'sex' => ['nullable', 'integer', 'between:1,2'],
             'insurance_company' => ['nullable', 'max:50'],
             'spouse' => ['nullable', 'between:0,1'],

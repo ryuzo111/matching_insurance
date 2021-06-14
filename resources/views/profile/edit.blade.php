@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Profile')
 @section('content')
-@if (session('message'))
-	{{ session('message') }}
-@endif
 @if ($errors->any())
 	@foreach ($errors->all() as $error)
 		<p class="text-danger">{{ $error }}</p>
@@ -27,7 +24,7 @@
 		<p>【メールアドレス】{{Form::email('email', old('email', $user->email))}}</p>
 		<p>【年齢】{{Form::number('age', old('age', $user->age))}}</p>
 		<p>【性別】{{Form::select('sex', config('sex'), old('sex', $user->sex))}}</p>
-		<p>【保険会社】{{Form::text('insurance_company', old('insurance_company', $user->insurance_company))}}</p>
+		<p>【勤めている保険会社(※保険会社にお勤めの方のみ任意でご記入ください)】{{Form::text('insurance_company', old('insurance_company', $user->insurance_company))}}</p>
 		<p>【配偶者】{{Form::select('spouse', ['' => '', 0 => 0, 1 => 1], old('spouse', $user->spouse))}}人</p>
 		<p>【子供】{{Form::number('children', old('children', $user->children))}}人</p>
 		<p>【家の種類】{{Form::select('house_type', config('house_type'), old('house_type', $user->house_type))}}</p>

@@ -71,7 +71,7 @@ class ProfileController extends Controller
 	public function edit($id)
 	{
 		if ($id != Auth::id()) {
-			return redirect(route('profile', [Auth::id()]))->with('message', '不正な 処理が検出されました');
+			return redirect(route('profile', [Auth::id()]))->with('error', '不正な処理が検出されました');
 		}
 		$user = $this->user->getDetailById($id);
 		return view('profile.edit', compact('user'));
@@ -87,10 +87,10 @@ class ProfileController extends Controller
 	public function update(EditProfileRule $request)
 	{
 		if ($request->id != Auth::id()) {
-			return redirect(route('profile', [Auth::id()]))->with('message', '不正な 処理が検出されました');
+			return redirect(route('profile', [Auth::id()]))->with('error', '不正な処理が検出されました');
 		}
 		$this->user->updateProfile($request);
-		return redirect(route('profile', [Auth::id()]))->with('message', 'プロフィールを編集しました');
+		return redirect(route('profile', [Auth::id()]))->with('success', 'プロフィールを編集しました');
 	}
 
 	/**
@@ -103,7 +103,7 @@ class ProfileController extends Controller
 	public function edit_pass($id)
 	{
 		if ($id != Auth::id()) {
-			return redirect(route('profile', [Auth::id()]))->with('message', '不正な 処理が検出されました');
+			return redirect(route('profile', [Auth::id()]))->with('error', '不正な処理が検出されました');
 		}
 		$user = $this->user->getDetailById($id);
 		return view('profile.edit_pass', compact('user'));
@@ -112,19 +112,19 @@ class ProfileController extends Controller
 	public function update_pass(EditPassRule $request)
 	{
 		if ($request->id != Auth::id()) {
-			return redirect(route('profile', [Auth::id()]))->with('message', '不正な 処理が検出されました');
+			return redirect(route('profile', [Auth::id()]))->with('error', '不正な処理が検出されました');
 		}
 		$this->user->updatePass($request);
-		return redirect(route('profile', [Auth::id()]))->with('message', 'パスワードを変更しました');
+		return redirect(route('profile', [Auth::id()]))->with('success', 'パスワードを変更しました');
 	}
 
 	public function image_delete($id)
 	{
 		$user = $this->user->getDetailById($id);
 		if ($id != Auth::id() || !$user->image_pass) {
-			return redirect(route('profile', [Auth::id()]))->with('message', '不正な 処理が検出されました');
+			return redirect(route('profile', [Auth::id()]))->with('error', '不正な処理が検出されました');
 		}
-		$user->deleteImageById($user);
-		return redirect(route('profile.edit', [Auth::id()]))->with('message', '画像を消去しました');
+		$user->deleteImage($user);
+		return redirect(route('profile.edit', [Auth::id()]))->with('success', '画像を消去しました');
 	}
 }

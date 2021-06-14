@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Profile')
 @section('content')
-@if (session('message'))
-	{{ session('message') }}
-@endif
 <div>プロフィール</div>
 
 <div>
@@ -28,7 +25,7 @@
 	@else
 		登録なし</p>
 	@endif
-	<p>【保険会社】
+	<p>【勤務している保険会社】
 	@if ($user->insurance_company)
 		{{ $user->insurance_company }}</p>
 	@else

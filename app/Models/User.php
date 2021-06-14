@@ -51,7 +51,7 @@ class User extends Authenticatable {
 		return $user;
 	}
 
-	public function deleteImageById($user)
+	public function deleteImage($user)
 	{
 		File::delete('storage/image/' . $user->image_pass);
 		$user->image_pass = null;

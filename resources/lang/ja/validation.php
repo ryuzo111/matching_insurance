@@ -97,6 +97,7 @@ return [
 	'attributes' => [
 		'name' => 'ユーザー名',
 		'email' => 'メールアドレス',
+		'age' => '年齢',
 		'password' => 'パスワード',
 		'current_password' => '現在のパスワード',
 		'insurance_company' => '保険会社名',
