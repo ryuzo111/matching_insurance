@@ -24,6 +24,7 @@ class EditProfileRule extends FormRequest
 			'sex' => ['nullable', 'integer', 'between:1,2'],
             'insurance_company' => ['nullable', 'max:50'],
             'spouse' => ['nullable', 'between:0,1'],
+            'children' => ['nullable', 'integer', 'min:0'],
 			'house_type' => ['nullable', 'integer', 'between:1,7'],
 			'pref' => ['nullable', 'integer', 'between:1,47'],
             'free_comment' => ['nullable', 'max:255'],
