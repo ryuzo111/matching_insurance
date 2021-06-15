@@ -25,6 +25,8 @@ Route::get('/post', 'PostController@index')->name('post.index');
 Route::get('/post/search', 'PostController@search')->name('post.search');
 Route::get('/post/detail/', 'PostController@detail')->name('post.detail');
 Route::get('/profile/{id}', 'ProfileController@detail')->name('profile');
+Route::get('contact', 'ContactController@contactForm')->name('contact.contact_form');
+Route::post('contact', 'ContactController@contact')->name('contact.contact');
 
 /*
 * ログイン後
