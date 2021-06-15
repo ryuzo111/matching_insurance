@@ -53,6 +53,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+									<li><a href="{{ route('profile', ['id' => Auth::user()->id]) }}">プロフィール</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -86,7 +87,6 @@
     <footer>
 		<a class="footer-btn" href="{{route('contact.contact_form')}}">お問い合わせ</a>
 	</footer>
-   
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

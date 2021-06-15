@@ -50,6 +50,14 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
     });
 });
 
+Route::group(['prefix' => 'profile', 'middleware' => 'auth:user'], function () {
+	Route::get('/edit/{id}', 'ProfileController@edit')->name('profile.edit');
+	Route::post('/edit/{id}', 'ProfileController@update');
+	Route::get('/edit_pass/{id}', 'ProfileController@edit_pass')->name('profile.edit_pass');
+	Route::post('/edit_pass/{id}', 'ProfileController@update_pass');
+	Route::get('/image_delete/{id}', 'ProfileController@image_delete')->name('profile.image_delete');
+});
+
 /*
 * Admin
 */
