@@ -94,6 +94,9 @@ class FamilyInsController extends Controller
 		}
 
 		$check = $this->family_ins->checkRegNumber(Auth::id(), $request->relationship);
+		if ($request->relationship == $family_ins->relationship) {
+			$check = null;
+		}
 		if ($check != null) {
 			return redirect(route('profile', [Auth::id()]))->with('error',$check);
 		}
