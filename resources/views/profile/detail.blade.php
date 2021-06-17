@@ -66,10 +66,10 @@
 	<a href="{{ route('family_ins.create') }}">家族加入保険追加</a>
 @endif
 <div>
-	@empty ($user->family_insurances[0])
+	@if ($family_insurances->isEmpty())
 		<p>登録無し</p>
-	@endempty
-	@foreach ($user->family_insurances as $family_insurance)
+	@endif
+	@foreach ($family_insurances as $family_insurance)
 		<p>{{ $loop->iteration }}</p>
 		<p>【続柄】{{ Config::get('relationship')[$family_insurance->relationship] }}</p>
 		<p>【年齢】{{ $family_insurance->age }}</p>

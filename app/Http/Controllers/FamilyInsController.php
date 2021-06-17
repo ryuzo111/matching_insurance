@@ -44,7 +44,7 @@ class FamilyInsController extends Controller
      */
     public function store(SaveFamilyInsRule $request)
     {
-		$check = $this->family_ins->checkRegNumber(Auth::id(), $request->relationship);
+		$check = $this->family_ins->countRegistration(Auth::id(), $request->relationship);
 		if ($check != null) {
 			return redirect(route('profile', [Auth::id()]))->with('error',$check);
 		}
@@ -93,7 +93,7 @@ class FamilyInsController extends Controller
 			return redirect(route('profile', [Auth::id()]))->with('error', '不正な処理が検出されました');
 		}
 
-		$check = $this->family_ins->checkRegNumber(Auth::id(), $request->relationship);
+		$check = $this->family_ins->countRegistration(Auth::id(), $request->relationship);
 		if ($request->relationship == $family_ins->relationship) {
 			$check = null;
 		}

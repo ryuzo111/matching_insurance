@@ -22,11 +22,17 @@ class FamilyInsurance extends Model
         return $family_ins;
     }
 
-    public function checkRegNumber($user_id, $relationship)
+    public function getFirstRecordByUserId($user_id)
+    {
+        $first_femilyins_record = $this->where('user_id', $user_id)->firstOrFail();
+        return $first_femilyins_record;
+    }
+
+    public function countRegistration($user_id, $relationship)
     {
 		$check_number = null;
-		$spouse = $this->getDetailByid($user_id)->user->spouse;
-		$children = $this->getDetailByid($user_id)->user->children;
+		$has_spouse = $this->getFirstRecordByUserId($user_id)->user->spouse;
+		$children_num = $this->getFirstRecordByUserId($user_id)->user->children;
         $count_reg = FamilyInsurance::where('user_id', $user_id)->where('relationship', $relationship)->get()->count();
 
 		switch ($relationship) {
@@ -36,12 +42,12 @@ class FamilyInsurance extends Model
 			}
 			break;
 		case 2:
-			if ($count_reg >= $spouse) {
-				$check_number = "配偶者数がプロフィールの登録と一致しません。";
+			if ($count_reg >= $has_spouse) {
+				$check_number = "お先にプロフィールの登録をお願いします";
 			}
 			break;
 		case 3:
-			if ($count_reg >= $children) {
+			if ($count_reg >= $children_num) {
 				$check_number = "プロフィールの登録より多いお子様数は登録できません";
 			}
 			break;
