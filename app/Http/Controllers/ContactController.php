@@ -38,4 +38,9 @@ class ContactController extends Controller
             return redirect()->route('post.index');
         }
     }
+    public function index()
+    {
+        $contacts = $this->contact->getContact();
+        return view('contact.index', compact('contacts'));
+    }
 }

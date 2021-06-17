@@ -24,4 +24,9 @@ class Contact extends Model
         $this->save();
         return $this->email;
     }
+
+    public function getContact()
+    {
+        return $this->all();
+    }
 }

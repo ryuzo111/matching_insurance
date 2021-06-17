@@ -72,12 +72,12 @@
             </div>
         </nav>
         @if (session('success'))
-        <div class="success" style="color:blue">{{ session('success') }}</div>
-    @endif
+            <div class="success" style="color:blue">{{ session('success') }}</div>
+        @endif
 
-    @if (session('error'))
-        <div class="error" style="color:red">{{ session('error') }}</div>
-    @endif
+        @if (session('error'))
+            <div class="error" style="color:red">{{ session('error') }}</div>
+        @endif
 
         @yield('content')
     </div>
