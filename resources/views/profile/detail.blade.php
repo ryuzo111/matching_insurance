@@ -6,12 +6,13 @@
 <div>
 	@if ($user->image_pass)
 		<img src="{{ $user->image_pass }}" alt="" width="100">
+		<img src="{{ asset('storage/image/' . $user->image_pass)}}" alt="" width="100">
 	@else
 		<img src="{{ asset('storage/default/default.jpeg') }}" alt="" width="100">
 	@endif
 	<p>{{ count($user->followees) }}フォロー中　{{ count($user->followers ) }}フォロワー</p>
 	<p>【名前】{{ $user->name }}</p>
-	<p>【メールアドレス】{{$user->email }}</p>
+	<p>【メールアドレス】{{ $user->email }}</p>
 	<p>【年齢】
 	@if ($user->age)
 		{{ $user->age }}</p>
@@ -24,7 +25,7 @@
 	@else
 		登録なし</p>
 	@endif
-	<p>【保険会社】
+	<p>【勤務している保険会社】
 	@if ($user->insurance_company)
 		{{ $user->insurance_company }}</p>
 	@else
@@ -56,6 +57,9 @@
 	@endif
 	<p>【フリーコメント】{{ $user->free_comment }}</p>
 </div>
+@if (Auth::id() == $user->id)
+	<a href="{{ route('profile.edit', ['id' => $user->id]) }}">プロフィール情報編集</a>
+@endif
 <hr>
 <div>家族加入保険</div>
 <div>

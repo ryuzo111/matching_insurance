@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +16,28 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Comment::class, function (Faker $faker) {
     $date = \Carbon\Carbon::now();
-    return [
+    // return [
+    //     'post_id' => function() {
+    //         // return factory(App\Models\Post::class)->create()->id;
+    //         return factory(App\Models\Post::class);
+    //     },
+    //     'user_id' => function () {
+    //         // return factory(App\Models\User::class)->create()->id;
+    //         return factory(App\Models\User::class);
+    //     },
+    //     'comment' => $faker->text,
+    // ];
+
+    $arr = [
         'post_id' => function() {
-            return factory(App\Models\Post::class)->create()->id;
-        },
-        'user_id' => function () {
-            return factory(App\Models\User::class)->create()->id;
-        },
-        'comment' => $faker->text,
+        // return factory(App\Models\Post::class)->create()->id;
+        return factory(App\Models\Post::class);
+    },
+    'user_id' => function () {
+        // return factory(App\Models\User::class)->create()->id;
+        return factory(App\Models\User::class);
+    },
+    'comment' => $faker->text,
     ];
+    return $arr;
 });

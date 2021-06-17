@@ -3,6 +3,9 @@
 @section('content')
 
 <h1>保険の悩み一覧</h1>
+
+<a href="{{ route('post.create') }}">悩みを投稿する</a>
+
 <form action="{{ route('post.search') }}" method="GET">
     <input type="text" name="word" value={{ old('word') }}>
     <input type="submit" value="検索する">

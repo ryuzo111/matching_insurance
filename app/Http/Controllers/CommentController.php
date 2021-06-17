@@ -10,7 +10,10 @@ use App\Http\Requests\SaveCommentRule;
 use App\Http\Requests\EditCommentRule;
 use Mail;
 use App\Mail\CommentNotification;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
+=======
+>>>>>>> master
 
 class CommentController extends Controller
 {
@@ -33,9 +36,12 @@ class CommentController extends Controller
     public function delete(Request $request)
     {
         $comment = $this->comment->getCommentById($request->input('comment_id'));
+<<<<<<< HEAD
         if ($comment->user_id !== Auth::id()) {
             return back()->with('error', 'コメントを削除できませんでした');
         }
+=======
+>>>>>>> master
         $this->comment->deleteCommentById($request->input('comment_id'));
         session()->flash('success', 'コメントを削除しました');
         return redirect()->route('post.detail', ['post_id' => $comment->post_id]);
@@ -50,10 +56,13 @@ class CommentController extends Controller
 
     public function edit(EditCommentRule $request)
     {
+<<<<<<< HEAD
         $comment = $this->comment->getCommentById($request->input('comment_id'));
         if ($comment->user_id !== Auth::id()) {
             return back()->with('error', 'コメントを編集できませんでした');
         }
+=======
+>>>>>>> master
         $this->comment->editComment($request);
         session()->flash('success', 'コメントを編集しました');
         return $this->redirectDetailByCommentId($request->input('comment_id'));

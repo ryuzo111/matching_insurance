@@ -25,18 +25,20 @@ Route::get('/post', 'PostController@index')->name('post.index');
 Route::get('/post/search', 'PostController@search')->name('post.search');
 Route::get('/post/detail/', 'PostController@detail')->name('post.detail');
 Route::get('/profile/{id}', 'ProfileController@detail')->name('profile');
+Route::get('contact', 'ContactController@contactForm')->name('contact.contact_form');
+Route::post('contact', 'ContactController@contact')->name('contact.contact');
 
 /*
 * ログイン後
 */
 Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
-    Route::get('/create', 'PostController@showCreateForm')->name('post.create');
-    Route::post('/create', 'PostController@create');
+    Route::get('/create', 'PostController@create')->name('post.create');
+    Route::post('/create', 'PostController@store');
 
-    Route::get('/edit/{id}', 'PostController@showEditForm')->name('post.edit');
-    Route::post('/edit/{id}', 'PostController@edit');
+    Route::get('/edit/{post}', 'PostController@edit')->name('post.edit');
+    Route::post('/edit/{post}', 'PostController@update');
 
-    Route::post('/delete/{id}', 'PostController@delete')->name('post.delete');
+    Route::post('/delete/{post}', 'PostController@delete')->name('post.delete');
 
     Route::group(['prefix' => 'comment', 'middleware' => 'auth:user'], function () {
         Route::post('/', 'CommentController@comment')->name('post.comment');
@@ -46,6 +48,14 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
         Route::get('/good', 'CommentController@good')->name('comment.good');
         Route::get('/good/delete', 'CommentController@deleteGood')->name('comment.delete_good');
     });
+});
+
+Route::group(['prefix' => 'profile', 'middleware' => 'auth:user'], function () {
+    Route::get('/edit/{id}', 'ProfileController@edit')->name('profile.edit');
+    Route::post('/edit/{id}', 'ProfileController@update');
+    Route::get('/edit_pass/{id}', 'ProfileController@edit_pass')->name('profile.edit_pass');
+    Route::post('/edit_pass/{id}', 'ProfileController@update_pass');
+    Route::get('/image_delete/{id}', 'ProfileController@image_delete')->name('profile.image_delete');
 });
 
 /*
