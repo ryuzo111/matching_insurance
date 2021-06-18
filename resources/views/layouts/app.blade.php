@@ -42,6 +42,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+						<li><a href="{{ route('ranking')}}">ランキング</a><li>
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">ログイン</a></li>

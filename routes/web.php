@@ -27,6 +27,7 @@ Route::get('/post/detail/', 'PostController@detail')->name('post.detail');
 Route::get('/profile/{id}', 'ProfileController@detail')->name('profile');
 Route::get('contact', 'ContactController@contactForm')->name('contact.contact_form');
 Route::post('contact', 'ContactController@contact')->name('contact.contact');
+Route::get('/ranking', 'RankingController@index')->name('ranking');
 
 /*
  * ログイン後

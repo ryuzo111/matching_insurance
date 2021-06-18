@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class Comment extends Model
 {
@@ -49,4 +50,15 @@ class Comment extends Model
         $target_comment->save();
         return true;
     }
+
+    public function getWeeklyGoodComments()
+    {
+		$sevendays_ago = Carbon::today()->subDay(7);
+		$comments = $this->whereDate('created_at', '>=', $sevendays_ago)
+			->withCount('goods')
+			->orderBy('goods_count', 'desc')->get();
+		$comments = $comments->whereNotIn('goods_count', 0);
+		return $comments;
+    }
+
 }
