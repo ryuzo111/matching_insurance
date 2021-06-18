@@ -9,17 +9,17 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
 
 /*
-* ログイン前
-*/
+ * ログイン前
+ */
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/post', 'PostController@index')->name('post.index');
 Route::get('/post/search', 'PostController@search')->name('post.search');
@@ -29,25 +29,25 @@ Route::get('contact', 'ContactController@contactForm')->name('contact.contact_fo
 Route::post('contact', 'ContactController@contact')->name('contact.contact');
 
 /*
-* ログイン後
-*/
+ * ログイン後
+ */
 Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
-    Route::get('/create', 'PostController@create')->name('post.create');
-    Route::post('/create', 'PostController@store');
+	Route::get('/create', 'PostController@create')->name('post.create');
+	Route::post('/create', 'PostController@store');
 
-    Route::get('/edit/{post}', 'PostController@edit')->name('post.edit');
-    Route::post('/edit/{post}', 'PostController@update');
+	Route::get('/edit/{post}', 'PostController@edit')->name('post.edit');
+	Route::post('/edit/{post}', 'PostController@update');
 
-    Route::post('/delete/{post}', 'PostController@delete')->name('post.delete');
+	Route::post('/delete/{post}', 'PostController@delete')->name('post.delete');
 
-    Route::group(['prefix' => 'comment', 'middleware' => 'auth:user'], function () {
-        Route::post('/', 'CommentController@comment')->name('post.comment');
-        Route::get('/delete', 'CommentController@delete')->name('comment.delete');
-        Route::get('/edit', 'CommentController@editForm')->name('comment.edit_form');
-        Route::post('/edit', 'CommentController@edit')->name('comment.edit');
-        Route::get('/good', 'CommentController@good')->name('comment.good');
-        Route::get('/good/delete', 'CommentController@deleteGood')->name('comment.delete_good');
-    });
+	Route::group(['prefix' => 'comment', 'middleware' => 'auth:user'], function () {
+		Route::post('/', 'CommentController@comment')->name('post.comment');
+		Route::get('/delete', 'CommentController@delete')->name('comment.delete');
+		Route::get('/edit', 'CommentController@editForm')->name('comment.edit_form');
+		Route::post('/edit', 'CommentController@edit')->name('comment.edit');
+		Route::get('/good', 'CommentController@good')->name('comment.good');
+		Route::get('/good/delete', 'CommentController@deleteGood')->name('comment.delete_good');
+	});
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth:user'], function () {
@@ -58,18 +58,26 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth:user'], function () {
 	Route::get('/image_delete/{id}', 'ProfileController@image_delete')->name('profile.image_delete');
 });
 
+Route::group(['prefix' => 'family_ins', 'middleware' => 'auth:user'], function () {
+	Route::get('/create', 'FamilyInsController@create')->name('family_ins.create');
+	Route::post('/create', 'FamilyInsController@store');
+	Route::get('/edit', 'FamilyInsController@edit')->name('family_ins.edit');
+	Route::post('/edit', 'FamilyInsController@update');
+	Route::get('/delete', 'FamilyInsController@delete')->name('family_ins.delete');
+});
+
 /*
-* Admin
-*/
+ * Admin
+ */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
-    Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
-    Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+	Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
+	Route::get('home', 'Admin\HomeController@index')->name('admin.home');
 });
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
-    Route::post('login', 'Admin\LoginController@login');
-    Route::get('logout', function () {
-        return abort(404);
-    });
+	Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
+	Route::post('login', 'Admin\LoginController@login');
+	Route::get('logout', function () {
+		return abort(404);
+	});
 });

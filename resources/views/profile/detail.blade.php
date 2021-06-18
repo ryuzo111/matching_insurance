@@ -62,16 +62,23 @@
 @endif
 <hr>
 <div>家族加入保険</div>
+@if (Auth::id() == $user->id)
+	<a href="{{ route('family_ins.create') }}">家族加入保険追加</a>
+@endif
 <div>
-	@empty ($user->family_insurances[0])
+	@if ($family_insurances->isEmpty())
 		<p>登録無し</p>
-	@endempty
-	@foreach ($user->family_insurances as $family_insurance)
+	@endif
+	@foreach ($family_insurances as $family_insurance)
 		<p>{{ $loop->iteration }}</p>
 		<p>【続柄】{{ Config::get('relationship')[$family_insurance->relationship] }}</p>
 		<p>【年齢】{{ $family_insurance->age }}</p>
 		<p>【加入保険】{{ $family_insurance->have_insurance_company }}</p>
 		<p>【加入保険説明】{{ $family_insurance->have_insurance_content }}</p>
+		@if (Auth::id() == $user->id)
+			<a href="{{ route('family_ins.edit', ['id' => $family_insurance->id]) }}">編集</a>
+			<a href="{{ route('family_ins.delete', ['id' => $family_insurance->id]) }}">削除</a>
+		@endif
 		<br>
 	@endforeach
 </div>
