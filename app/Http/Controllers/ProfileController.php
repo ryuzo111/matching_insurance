@@ -27,8 +27,7 @@ class ProfileController extends Controller
 
 	public function detail($id) {
 		$user = $this->user->getDetailById($id);
-		$family_insurances = $user->family_insurances->sortBy('relationship');
-		return view('profile.detail', compact('user', 'family_insurances'));
+		return view('profile.detail', compact('user'));
 	}
 
 	/**
