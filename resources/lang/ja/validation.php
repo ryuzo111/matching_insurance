@@ -102,8 +102,5 @@ return [
 		'password' => 'パスワード',
 		'current_password' => '現在のパスワード',
 		'insurance_company' => '保険会社名',
-		'have_insurance_company' => '加入保険',
-		'have_insurance_content' => '加入保険説明',
-		'relationship' => '続柄',
 	],
 ];

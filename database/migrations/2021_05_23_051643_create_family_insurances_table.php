@@ -21,7 +21,6 @@ class CreateFamilyInsurancesTable extends Migration
             $table->string('have_insurance_company')->nullable();
             $table->string('have_insurance_content');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
