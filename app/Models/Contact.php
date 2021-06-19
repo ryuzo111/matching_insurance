@@ -39,6 +39,9 @@ class Contact extends Model
     public function updateStatusById($id)
     {
         $target_contact = $this->findOrFail($id);
+        if ($target_contact->status === 1) {
+            return false;
+        }
         $target_contact->status = 1;
         $target_contact->save();
         return true;

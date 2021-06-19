@@ -49,19 +49,28 @@ class ContactController extends Controller
     public function answerForm(Request $request)
     {
         $contact = $this->contact->getContactById($request->input('contact_id'));
+        if ($contact->status === 1) {
+            return redirect()->route('contact.index')->with('error', 'このお問い合わせは既に解決しております');
+        }
         return view('contact.answer_form', compact('contact'));
     }
 
     public function answer(SendAnswerRule $request)
     {
         $contact = $this->contact->getContactById($request->input('contact_id'));
+        if ($contact->status === 1) {
+            return redirect()->route('contact.index')->with('error', 'このお問い合わせは既に解決しております');
+        }
         Mail::send(new ContactAnswer($contact, $request->input('answer')));
         return redirect()->route('contact.index')->with('success', 'お問い合わせ者に回答を送信いたしました');
     }
 
     public function changeStatus(Request $request)
     {
-        $this->contact->updateStatusById($request->input('contact_id'));
+        $result = $this->contact->updateStatusById($request->input('contact_id'));
+        if ($result === false) {
+            return redirect()->route('contact.index')->with('error', 'このお問い合わせは既に解決しております');
+        }
         return redirect()->route('contact.index')->with('success', '回答状況を変更いたしました');
     }
 }
