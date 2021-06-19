@@ -73,6 +73,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 	Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
 	Route::get('home', 'Admin\HomeController@index')->name('admin.home');
 	Route::get('contact', 'ContactController@index')->name('contact.index');
+	Route::get('answer', 'ContactController@answerForm')->name('contact.answer_form');
+	Route::post('answer', 'ContactController@answer')->name('contact.answer');
+	Route::get('status', 'ContactController@changeStatus')->name('contact.change_status');
 });
 
 Route::group(['prefix' => 'admin'], function () {

@@ -27,6 +27,20 @@ class Contact extends Model
 
     public function getContact()
     {
-        return $this->all();
+        $contacts = $this->all();
+        return $contacts->sortByDesc('created_at');
+    }
+
+    public function getContactById($id)
+    {
+        return $this->findOrFail($id);
+    }
+
+    public function updateStatusById($id)
+    {
+        $target_contact = $this->findOrFail($id);
+        $target_contact->status = 1;
+        $target_contact->save();
+        return true;
     }
 }

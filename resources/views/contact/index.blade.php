@@ -5,11 +5,17 @@
 <h1>問い合わせ一覧</h1>
 
 @foreach ($contacts as $contact)
-<p>{{ $contact->content }}</p>
-<p>{{ $contact->email }}</p>
-<p>{{ $contact->status }}</p>
-<p>{{ $contact->created_at }}</p>
-
+	<p>{{ $contact->created_at }}</p>
+	<p>お問い合わせ内容:{{ $contact->content }}</p>
+	<p>お問い合わせ者のメールアドレス:{{ $contact->email }}</p>
+	<p>回答状況:{{ config('status.' . $contact->status) }}</p>
+	@if ($contact->status === 0)
+		<a href="{{ route('contact.answer', ['contact_id' => $contact->id]) }}">回答する</a>
+		</br>
+		<a href="{{ route('contact.change_status', ['contact_id' => $contact->id]) }}">解決済みにする</a>
+	@endif
+	</br>
+	</br>
 @endforeach
 
 @endsection
