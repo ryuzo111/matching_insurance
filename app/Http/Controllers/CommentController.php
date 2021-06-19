@@ -44,6 +44,9 @@ class CommentController extends Controller
     public function editForm(Request $request)
     {
         $target_comment = $this->comment->getCommentById($request->input('comment_id'));
+        if ($target_comment->user_id !== Auth::id()) {
+            return back()->with('error', 'コメントを編集できません');
+        }
         $post = $this->post->getDetailPostById($target_comment->post_id);
         return view('post/comment_edit', compact('post', 'target_comment'));
     }
