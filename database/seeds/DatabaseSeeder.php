@@ -27,13 +27,13 @@ class DatabaseSeeder extends Seeder
         //postsテーブルとusersテーブルを3件作成する
         $posts = factory(App\Models\Post::class, 3)->create();
         //interested_insurancesテーブルを作成
-        $posts->each(function($post){
+        $posts->each(function ($post) {
             factory(App\Models\InterestedInsurance::class, 1)->create(['post_id' => $post->id]);
         });
 
         //作成した$postに対してコメントをそれぞれ３件作成する。キーを指定することで属性をオーバーライドできる
-        $posts->each(function($post){
-            factory(App\Models\Comment::class, 3)->create(['post_id' => $post->id,'user_id' => $post->user_id]);
+        $posts->each(function ($post) {
+            factory(App\Models\Comment::class, 3)->create(['post_id' => $post->id, 'user_id' => $post->user_id]);
         });
     }
 }

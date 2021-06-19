@@ -83,6 +83,7 @@
 
         @yield('content')
     </div>
+   
 
     <footer>
 		<a class="footer-btn" href="{{route('contact.contact_form')}}">お問い合わせ</a>
