@@ -20,19 +20,18 @@ class RankingController extends Controller
 		$rank = 1;
 		$count = 1;
 		$before_point = 0;
-		$comments_array = $comments->toArray();
-		$array = [];
-		foreach ($comments_array as $comment) {
-			if ($before_point != $comment['goods_count']) {
+		$ranking_array = [];
+		foreach ($comments as $comment) {
+			if ($before_point != $comment->goods_count) {
 				$rank = $count;
 			}
-			$array[] = $rank;
+			$ranking_array[] = $rank;
 			$before_point = $comment['goods_count'];
 			$count++;
 		}
 
-		$comments->map(function ($item, $key) use($array) {
-			$item['rank'] = $array[$key];
+		$comments->map(function ($item, $key) use($ranking_array) {
+			$item['rank'] = $ranking_array[$key];
 			return $item;
 		});
 		return view('ranking.index', compact('comments'));
