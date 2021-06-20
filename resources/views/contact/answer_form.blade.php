@@ -2,6 +2,8 @@
 
 @section('content')
 
+<p>この回答の回答状況:{{ config('status.' . $contact->status) }}</p>
+
 <p>いただいた問い合わせ:{{ $contact->content }}</p>
 
 <h1>回答フォーム</h1>
