@@ -7,7 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
-class User extends Authenticatable {
+class User extends Authenticatable
+{
 	use Notifiable;
 
 	/*
@@ -91,5 +92,15 @@ class User extends Authenticatable {
 		$user->password = bcrypt($data->password);
 		$user->save();
 		return true;
+	}
+
+	public function getUserByEmail($email)
+	{
+		if ($this->where('email', $email)->exists()) {
+			$user = $this->where('email', $email)->first();
+			return $user;
+		} else {
+			return false;
+		}
 	}
 }

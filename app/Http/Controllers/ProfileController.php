@@ -12,7 +12,8 @@ class ProfileController extends Controller
 {
 	private $user;
 
-	public function __construct(User $user) {
+	public function __construct(User $user)
+	{
 		$this->user = $user;
 	}
 	/**
@@ -25,10 +26,18 @@ class ProfileController extends Controller
 		//
 	}
 
-	public function detail($id) {
+	public function detail($id)
+	{
 		$user = $this->user->getDetailById($id);
 		$family_insurances = $user->family_insurances->sortBy('relationship');
 		return view('profile.detail', compact('user', 'family_insurances'));
+	}
+
+	public function adminOnlyDetail($id)
+	{
+		$user = $this->user->getDetailById($id);
+		$family_insurances = $user->family_insurances->sortBy('relationship');
+		return view('profile.admin_detail', compact('user', 'family_insurances'));
 	}
 
 	/**

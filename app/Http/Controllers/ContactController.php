@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Admin;
+use App\Models\User;
 use App\Http\Requests\SaveContactRule;
 use App\Http\Requests\SendAnswerRule;
 use App\Mail\ContactAdmin;
@@ -15,10 +16,11 @@ use Mail;
 class ContactController extends Controller
 {
 
-    public function __construct(Contact $contact, Admin $admin)
+    public function __construct(Contact $contact, Admin $admin, User $user)
     {
         $this->contact = $contact;
         $this->admin = $admin;
+        $this->user = $user;
     }
 
     public function contactForm()
@@ -46,19 +48,25 @@ class ContactController extends Controller
         return view('contact.index', compact('contacts'));
     }
 
-    public function answerForm(Request $request)
+    public function showAnswerForm(Request $request)
     {
         $contact = $this->contact->getContactById($request->input('contact_id'));
-        if ($contact->status === 1) {
+        $user = $this->user->getUserByEmail($contact->email);
+        if ($contact->status === 2) {
             return redirect()->route('contact.index')->with('error', 'このお問い合わせは既に解決しております');
         }
-        return view('contact.answer_form', compact('contact'));
+
+        if ($user === false) {
+            return view('contact.answer_form', compact('contact'));
+        } else {
+            return view('contact.answer_form', compact('contact', 'user'));
+        }
     }
 
     public function answer(SendAnswerRule $request)
     {
         $contact = $this->contact->getContactById($request->input('contact_id'));
-        if ($contact->status === 1) {
+        if ($contact->status === 2) {
             return redirect()->route('contact.index')->with('error', 'このお問い合わせは既に解決しております');
         }
         Mail::send(new ContactAnswer($contact, $request->input('answer')));

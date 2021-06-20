@@ -19,4 +19,11 @@
 
 {{ Form::close() }}
 
+
+
+@if (!empty($user))
+	<p>問い合わせ者は会員登録済みです</p>
+	<a href="{{ route('admin.profile', ['id' => $user->id]) }}">{{ $user->name }}様のプロフィール</a>
+@endif
+
 @endsection
