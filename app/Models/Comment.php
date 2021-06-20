@@ -51,10 +51,9 @@ class Comment extends Model
         return true;
     }
 
-    public function getWeeklyGoodComments()
+    public function getGoodCommentsByDay($day)
     {
-		$sevendays_ago = Carbon::today()->subDay(7);
-		$comments = $this->whereDate('created_at', '>=', $sevendays_ago)
+		$comments = $this->whereDate('created_at', '>=', $day)
 			->withCount('goods')
 			->orderBy('goods_count', 'desc')->get();
 		$comments = $comments->whereNotIn('goods_count', 0);

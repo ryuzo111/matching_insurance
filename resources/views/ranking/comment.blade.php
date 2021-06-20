@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h2>週間いいね獲得コメントランキング</h2>
+<p>ユーザーごとのランキングは<a href="{{ route('ranking.user')}}">こちら</a></p>
 <h3>集計期間：{{ \Carbon\Carbon::today()->subDay(7)->format("Y年n月j日")}} ～
 {{ \Carbon\Carbon::today()->format("Y年n月j日")}}</h3>
 

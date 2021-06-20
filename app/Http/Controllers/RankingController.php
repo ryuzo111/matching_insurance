@@ -4,36 +4,46 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\User;
+use Carbon\Carbon;
+use App\Helpers\Ranking;
 
 class RankingController extends Controller
 {
+	public $sevendays_ago;
 
-    public function __construct(Comment $comment)
-    {
-        $this->comment = $comment;
-    }
-	public function index()
+	public function __construct(Comment $comment, User $user)
 	{
-		$comments = $this->comment->getWeeklyGoodComments();
+		$this->comment = $comment;
+		$this->user = $user;
+		$this->sevendays_ago = Carbon::today()->subDay(7);
+	}
+	public function comment()
+	{
+		$comments = $this->comment->getGoodCommentsByDay($this->sevendays_ago);
+		$comments = Ranking::getRanking($comments);
 
-		//同率順位表示のため、ランキングを作成し、コレクションに追加
-		$rank = 1;
-		$count = 1;
-		$before_point = 0;
-		$ranking_array = [];
-		foreach ($comments as $comment) {
-			if ($before_point != $comment->goods_count) {
-				$rank = $count;
-			}
-			$ranking_array[] = $rank;
-			$before_point = $comment['goods_count'];
-			$count++;
+		return view('ranking.comment', compact('comments'));
+	}
+
+	public function user()
+	{
+		$users = $this->user->getGoodCommentsByDay($this->sevendays_ago);
+
+		//それぞれのコメントのいいね数を集計し、コレクションに追加
+		$goods_sum = [];
+		foreach ($users as $user) {
+			$comments = $user->comments;
+			$sum = $comments->sum('goods_count');
+			$goods_sum[] = $sum;
 		}
-
-		$comments->map(function ($item, $key) use($ranking_array) {
-			$item['rank'] = $ranking_array[$key];
+		$users->map(function ($item, $key) use($goods_sum) {
+			$item['goods_count'] = $goods_sum[$key];
 			return $item;
 		});
-		return view('ranking.index', compact('comments'));
+		$users = $users->whereNotIn('goods_count', 0)->sortByDesc('goods_count')->values();
+		$users = Ranking::getRanking($users);
+
+		return view('ranking.user', compact('users'));
 	}
 }
