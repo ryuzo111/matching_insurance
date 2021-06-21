@@ -50,6 +50,7 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
 		Route::get('/good', 'CommentController@good')->name('comment.good');
 		Route::get('/good/delete', 'CommentController@deleteGood')->name('comment.delete_good');
 	});
+
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth:user'], function () {
@@ -67,6 +68,14 @@ Route::group(['prefix' => 'family_ins', 'middleware' => 'auth:user'], function (
 	Route::post('/edit', 'FamilyInsController@update');
 	Route::get('/delete', 'FamilyInsController@delete')->name('family_ins.delete');
 });
+
+Route::group(['prefix' => 'chat', 'middleware' => 'auth:user'], function () {
+	Route::get('/{receive_user}/{send_user}', 'ChatController@index')->name('chat.index');
+	Route::post('/{receive_user}/{send_user}/store', 'ChatController@store')->name('chat.store');
+
+	Route::get('/{receive_user}/{send_user}/ajax', 'ChatController@getData');
+});
+
 
 /*
  * Admin
