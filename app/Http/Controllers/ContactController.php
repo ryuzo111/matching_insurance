@@ -44,7 +44,7 @@ class ContactController extends Controller
     }
     public function index()
     {
-        $contacts = $this->contact->getContact();
+        $contacts = $this->contact->getPaginateContacts();
         return view('contact.index', compact('contacts'));
     }
 
@@ -52,7 +52,8 @@ class ContactController extends Controller
     {
         $contact = $this->contact->getContactById($request->input('contact_id'));
         $user = $this->user->getUserByEmail($contact->email);
-        if ($contact->status === 2) {
+        $solved_contact_status = array_search('解決', config('status'));
+        if ($contact->status === $solved_contact_status) {
             return redirect()->route('contact.index')->with('error', 'このお問い合わせは既に解決しております');
         }
 
@@ -66,7 +67,8 @@ class ContactController extends Controller
     public function answer(SendAnswerRule $request)
     {
         $contact = $this->contact->getContactById($request->input('contact_id'));
-        if ($contact->status === 2) {
+        $solved_contact_status = array_search('解決', config('status'));
+        if ($contact->status === $solved_contact_status) {
             return redirect()->route('contact.index')->with('error', 'このお問い合わせは既に解決しております');
         }
         Mail::send(new ContactAnswer($contact, $request->input('answer')));

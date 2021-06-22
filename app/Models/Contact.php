@@ -25,10 +25,9 @@ class Contact extends Model
         return $this->email;
     }
 
-    public function getContact()
+    public function getPaginateContacts()
     {
-        $contacts = $this->all();
-        return $contacts->sortByDesc('created_at');
+        return $this->orderBy('created_at', 'desc')->paginate(10);
     }
 
     public function getContactById($id)
@@ -39,7 +38,8 @@ class Contact extends Model
     public function updateStatusById($id)
     {
         $target_contact = $this->findOrFail($id);
-        if ($target_contact->status === 2) {
+        $solved_contact_status = array_search('解決', config('status'));
+        if ($target_contact->status === $solved_contact_status) {
             return false;
         }
         $target_contact->status = ++$target_contact->status;

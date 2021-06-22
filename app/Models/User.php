@@ -34,6 +34,11 @@ class User extends Authenticatable
 		return $this->hasMany('App\Models\FamilyInsurance');
 	}
 
+	public function comments()
+	{
+		return $this->hasMany('App\Models\Comment', 'user_id');
+	}
+
 	//フォローしている人
 	public function followers()
 	{
@@ -102,5 +107,15 @@ class User extends Authenticatable
 		} else {
 			return false;
 		}
+	}
+
+	public function getGoodCommentsByDay($day)
+	{
+		$users = $this->withCount('comments')->whereHas('comments', function ($query) use ($day) {
+			$query->whereDate('created_at', '>=', $day);
+		})->with(['comments' => function ($query) {
+			$query->withCount('goods');
+		}])->get();
+		return $users;
 	}
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class Comment extends Model
 {
@@ -52,4 +53,14 @@ class Comment extends Model
         $target_comment->save();
         return true;
     }
+
+    public function getGoodCommentsByDay($day)
+    {
+		$comments = $this->whereDate('created_at', '>=', $day)
+			->withCount('goods')
+			->orderBy('goods_count', 'desc')->get();
+		$comments = $comments->whereNotIn('goods_count', 0);
+		return $comments;
+    }
+
 }
