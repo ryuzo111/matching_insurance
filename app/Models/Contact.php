@@ -38,8 +38,7 @@ class Contact extends Model
     public function updateStatusById($id)
     {
         $target_contact = $this->findOrFail($id);
-        $solved_contact_status = array_search('解決', config('status'));
-        if ($target_contact->status === $solved_contact_status) {
+        if ($target_contact->status === config('status.resolved')) {
             return false;
         }
         $target_contact->status = ++$target_contact->status;

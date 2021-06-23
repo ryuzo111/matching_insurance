@@ -52,8 +52,7 @@ class ContactController extends Controller
     {
         $contact = $this->contact->getContactById($request->input('contact_id'));
         $user = $this->user->getUserByEmail($contact->email);
-        $solved_contact_status = array_search('解決', config('status'));
-        if ($contact->status === $solved_contact_status) {
+        if ($contact->status === config('status.resolved')) {
             return redirect()->route('contact.index')->with('error', 'このお問い合わせは既に解決しております');
         }
 
@@ -67,8 +66,7 @@ class ContactController extends Controller
     public function answer(SendAnswerRule $request)
     {
         $contact = $this->contact->getContactById($request->input('contact_id'));
-        $solved_contact_status = array_search('解決', config('status'));
-        if ($contact->status === $solved_contact_status) {
+        if ($contact->status === config('status.resolved')) {
             return redirect()->route('contact.index')->with('error', 'このお問い合わせは既に解決しております');
         }
         Mail::send(new ContactAnswer($contact, $request->input('answer')));
