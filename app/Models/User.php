@@ -7,7 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
-class User extends Authenticatable {
+class User extends Authenticatable
+{
 	use Notifiable;
 
 	/*
@@ -98,11 +99,21 @@ class User extends Authenticatable {
 		return true;
 	}
 
+	public function getUserByEmail($email)
+	{
+		if ($this->where('email', $email)->exists()) {
+			$user = $this->where('email', $email)->first();
+			return $user;
+		} else {
+			return false;
+		}
+	}
+
 	public function getGoodCommentsByDay($day)
 	{
-		$users = $this->withCount('comments')->whereHas('comments', function($query) use($day) {
+		$users = $this->withCount('comments')->whereHas('comments', function ($query) use ($day) {
 			$query->whereDate('created_at', '>=', $day);
-		})->with(['comments' => function($query) {
+		})->with(['comments' => function ($query) {
 			$query->withCount('goods');
 		}])->get();
 		return $users;

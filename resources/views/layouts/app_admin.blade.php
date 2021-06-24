@@ -29,7 +29,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ route('contact.index') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -71,6 +71,13 @@
                 </div>
             </div>
         </nav>
+        @if (session('success'))
+            <div class="success" style="color:blue">{{ session('success') }}</div>
+        @endif
+
+        @if (session('error'))
+            <div class="error" style="color:red">{{ session('error') }}</div>
+        @endif
 
         @yield('content')
     </div>

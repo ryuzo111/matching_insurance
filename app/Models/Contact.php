@@ -24,4 +24,25 @@ class Contact extends Model
         $this->save();
         return $this->email;
     }
+
+    public function getPaginateContacts()
+    {
+        return $this->orderBy('created_at', 'desc')->paginate(10);
+    }
+
+    public function getContactById($id)
+    {
+        return $this->findOrFail($id);
+    }
+
+    public function updateStatusById($id)
+    {
+        $target_contact = $this->findOrFail($id);
+        if ($target_contact->status === config('status.resolved')) {
+            return false;
+        }
+        $target_contact->status = ++$target_contact->status;
+        $target_contact->save();
+        return true;
+    }
 }

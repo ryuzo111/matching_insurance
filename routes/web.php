@@ -53,11 +53,11 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth:user'], function () {
-    Route::get('/edit/{id}', 'ProfileController@edit')->name('profile.edit');
-    Route::post('/edit/{id}', 'ProfileController@update');
-    Route::get('/edit_pass/{id}', 'ProfileController@edit_pass')->name('profile.edit_pass');
-    Route::post('/edit_pass/{id}', 'ProfileController@update_pass');
-    Route::get('/image_delete/{id}', 'ProfileController@image_delete')->name('profile.image_delete');
+	Route::get('/edit/{id}', 'ProfileController@edit')->name('profile.edit');
+	Route::post('/edit/{id}', 'ProfileController@update');
+	Route::get('/edit_pass/{id}', 'ProfileController@edit_pass')->name('profile.edit_pass');
+	Route::post('/edit_pass/{id}', 'ProfileController@update_pass');
+	Route::get('/image_delete/{id}', 'ProfileController@image_delete')->name('profile.image_delete');
 });
 
 Route::group(['prefix' => 'family_ins', 'middleware' => 'auth:user'], function () {
@@ -74,6 +74,11 @@ Route::group(['prefix' => 'family_ins', 'middleware' => 'auth:user'], function (
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 	Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
 	Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+	Route::get('contact', 'ContactController@index')->name('contact.index');
+	Route::get('answer', 'ContactController@showAnswerForm')->name('contact.show_answer_form');
+	Route::post('answer', 'ContactController@answer')->name('contact.answer');
+	Route::get('status', 'ContactController@changeStatus')->name('contact.change_status');
+	Route::get('/profile/{id}', 'ProfileController@adminOnlyDetail')->name('admin.profile');
 });
 
 Route::group(['prefix' => 'admin'], function () {
