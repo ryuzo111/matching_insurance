@@ -58,15 +58,20 @@ class CommentController extends Controller
             return back()->with('error', 'コメントを編集できませんでした');
         }
         $this->comment->editComment($request);
-        session()->flash('success', 'コメントを編集しました');
+        session()->flash('sccess', 'コメントを編集しました');
         return $this->redirectDetailByCommentId($request->input('comment_id'));
     }
 
     public function good(Request $request)
     {
-        $this->good->saveGoodByCommentId($request->input('comment_id'));
-        session()->flash('success', 'コメントにいいねしました');
-        return $this->redirectDetailByCommentId($request->input('comment_id'));
+        $result = $this->good->saveGoodByCommentId($request->input('comment_id'));
+        if ($result === true) {
+            session()->flash('success', 'コメントにいいねしました');
+            return $this->redirectDetailByCommentId($request->input('comment_id'));
+        } else {
+            session()->flash('error', '権限がありません');
+            return back();
+        }
     }
 
     public function deleteGood(Request $request)
