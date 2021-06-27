@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Relationship;
 use App\Http\Requests\EditProfileRule;
 use App\Http\Requests\EditPassRule;
 
 class ProfileController extends Controller
 {
-	private $user;
 
-	public function __construct(User $user)
+	public function __construct(User $user, Relationship $relationship)
 	{
 		$this->user = $user;
+		$this->relationship = $relationship;
 	}
 	/**
 	 * Display a listing of the resource.
@@ -30,7 +31,9 @@ class ProfileController extends Controller
 	{
 		$user = $this->user->getDetailById($id);
 		$family_insurances = $user->family_insurances->sortBy('relationship');
-		return view('profile.detail', compact('user', 'family_insurances'));
+		$is_following = $this->relationship->canUnfollow($id);
+		$is_followed = $this->relationship->isFollowed($id);
+		return view('profile.detail', compact('user', 'family_insurances', 'is_following', 'is_followed'));
 	}
 
 	public function adminOnlyDetail($id)

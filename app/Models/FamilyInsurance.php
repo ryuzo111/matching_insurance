@@ -22,17 +22,11 @@ class FamilyInsurance extends Model
         return $family_ins;
     }
 
-    public function getFirstRecordByUserId($user_id)
-    {
-        $first_femilyins_record = $this->where('user_id', $user_id)->firstOrFail();
-        return $first_femilyins_record;
-    }
-
     public function countRegistration($user_id, $relationship)
     {
 		$check_number = null;
-		$has_spouse = $this->getFirstRecordByUserId($user_id)->user->spouse;
-		$children_num = $this->getFirstRecordByUserId($user_id)->user->children;
+		$has_spouse = User::where('id', $user_id)->value('spouse');
+		$children_num = User::where('id', $user_id)->value('children');
         $count_reg = FamilyInsurance::where('user_id', $user_id)->where('relationship', $relationship)->get()->count();
 
 		switch ($relationship) {
