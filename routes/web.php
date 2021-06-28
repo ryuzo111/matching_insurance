@@ -29,6 +29,12 @@ Route::get('contact', 'ContactController@contactForm')->name('contact.contact_fo
 Route::post('contact', 'ContactController@contact')->name('contact.contact');
 Route::get('/ranking/comment', 'RankingController@comment')->name('ranking.comment');
 Route::get('/ranking/user', 'RankingController@user')->name('ranking.user');
+Route::get('promotion', function () {
+	return view('description.promotion');
+})->name('promotion');
+Route::get('prohibition', function () {
+	return view('description.prohibition');
+})->name('prohibition');
 
 /*
  * ログイン後
