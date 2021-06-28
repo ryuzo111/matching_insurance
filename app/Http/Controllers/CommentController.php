@@ -58,7 +58,7 @@ class CommentController extends Controller
             return back()->with('error', 'コメントを編集できませんでした');
         }
         $this->comment->editComment($request);
-        session()->flash('sccess', 'コメントを編集しました');
+        session()->flash('success', 'コメントを編集しました');
         return $this->redirectDetailByCommentId($request->input('comment_id'));
     }
 
@@ -69,7 +69,7 @@ class CommentController extends Controller
             session()->flash('success', 'コメントにいいねしました');
             return $this->redirectDetailByCommentId($request->input('comment_id'));
         } else {
-            session()->flash('error', '権限がありません');
+            session()->flash('error', 'コメントにいいねできませんでした');
             return back();
         }
     }
@@ -81,7 +81,7 @@ class CommentController extends Controller
             session()->flash('success', 'コメントのいいねを取り消しました');
             return $this->redirectDetailByCommentId($request->input('comment_id'));
         } else {
-            session()->flash('error', '権限がありません');
+            session()->flash('error', 'コメントのいいねを取り消せませんでした');
             return back();
         }
     }
