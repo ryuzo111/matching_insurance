@@ -64,9 +64,14 @@ class CommentController extends Controller
 
     public function good(Request $request)
     {
-        $this->good->saveGoodByCommentId($request->input('comment_id'));
-        session()->flash('success', 'コメントにいいねしました');
-        return $this->redirectDetailByCommentId($request->input('comment_id'));
+        $result = $this->good->saveGoodByCommentId($request->input('comment_id'));
+        if ($result === true) {
+            session()->flash('success', 'コメントにいいねしました');
+            return $this->redirectDetailByCommentId($request->input('comment_id'));
+        } else {
+            session()->flash('error', 'コメントにいいねできませんでした');
+            return back();
+        }
     }
 
     public function deleteGood(Request $request)
@@ -76,7 +81,7 @@ class CommentController extends Controller
             session()->flash('success', 'コメントのいいねを取り消しました');
             return $this->redirectDetailByCommentId($request->input('comment_id'));
         } else {
-            session()->flash('error', '権限がありません');
+            session()->flash('error', 'コメントのいいねを取り消せませんでした');
             return back();
         }
     }

@@ -16,18 +16,19 @@ class RedirectIfAuthenticated
      * @return mixed
      */
 
-    public function handle($request, Closure $next, $guard = null) {
+    public function handle($request, Closure $next, $guard = null)
+    {
         $redir = '/home';
         switch ($guard) {
-        case "admin":
-            $redir = '/admin/home';
-            break;
-        default:
-            $redir = '/home';
-            break;
+            case "admin":
+                $redir = '/admin/home';
+                break;
+            default:
+                $redir = '/home';
+                break;
         }
         if (Auth::guard($guard)->check()) {
-            return redirect($redir);
+            return redirect($redir)->with('success', 'ログインしました');
         }
 
         return $next($request);
