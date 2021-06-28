@@ -14,10 +14,14 @@ class Good extends Model
 
     public function saveGoodByCommentId($comment_id)
     {
-        $this->comment_id = $comment_id;
-        $this->user_id = Auth::id();
-        $this->save();
-        return true;
+        if ($this->where('comment_id', $comment_id)->where('user_id', Auth::id())->exists()) {
+            return false;
+        } else {
+            $this->comment_id = $comment_id;
+            $this->user_id = Auth::id();
+            $this->save();
+            return true;
+        }
     }
 
     public function deleteGoodByCommentId($comment_id)
@@ -29,5 +33,4 @@ class Good extends Model
             return false;
         }
     }
-
 }
