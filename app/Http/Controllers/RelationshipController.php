@@ -4,24 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Relationship;
+use App\Models\User;
 
 class RelationshipController extends Controller
 {
-	public function __construct(Relationship $relationship)
+	public function __construct(Relationship $relationship, User $user)
 	{
 		$this->relationship = $relationship;
+		$this->user = $user;
 	}
 
 	public function following(Request $request)
 	{
-		$followees = $this->relationship->getFollowingUsersById($request->input('following_user_id'));
-		return view('relationship.following', compact('followees'));
+		$following_user_id = $request->input('following_user_id');
+		$user = $this->user->getDetailById($following_user_id);
+		$followees = $this->relationship->getFollowingUsersById($following_user_id);
+		return view('relationship.following', compact('followees', 'following_user_id'));
 	}
 
 	public function followers(Request $request)
 	{
-		$followers = $this->relationship->getFollowedUsersById($request->input('followed_user_id'));
-		return view('relationship.followers', compact('followers'));
+		$followed_user_id = $request->input('followed_user_id');
+		$user = $this->user->getDetailById($followed_user_id);
+		$followers = $this->relationship->getFollowedUsersById($followed_user_id);
+		return view('relationship.followers', compact('followers', 'followed_user_id'));
 	}
 
 	public function follow(Request $request)

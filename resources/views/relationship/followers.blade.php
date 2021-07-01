@@ -27,5 +27,6 @@
 		</p>
 		@endforeach
 	@endif
+	<p></p><a href="{{ route('profile', ['id' => $followed_user_id]) }}"> プロフィールへ戻る</a></p>
 </div>
 @endsection

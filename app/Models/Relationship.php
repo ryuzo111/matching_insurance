@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Relationship extends Model
 {
+	protected $guarded = ['id'];
 	public $timestamps = false;
 
 	public function following_user()
@@ -33,9 +34,11 @@ class Relationship extends Model
 
 	public function saveFollowByFollowedId($followed_id)
 	{
-		$this->follower_id = Auth::id();
-		$this->followed_id = $followed_id;
-		$this->save();
+		$relationship = $this->create([
+				'follower_id' => Auth::id(),
+				'followed_id' => $followed_id,
+		]);
+
 		return true;
 	}
 
@@ -49,7 +52,7 @@ class Relationship extends Model
 	{
 		$can_follow = true;
 
-		if ($followed_id == Auth::id()) {
+		if ($followed_id == Auth::id() || !(ctype_digit($followed_id))) {
 			$can_follow = false;
 		}
 		if (User::where('id', $followed_id)->exists() == false) {
