@@ -69,14 +69,14 @@
     <p>コメント一覧</p>
     @foreach ($post->comments as $comment)
 
-        @if ($comment->user_id === Auth::id()) 
+        @if ($comment->user_id === Auth::id())
             <a href="{{route('comment.delete', ['comment_id' => $comment->id])}}">削除する</a>
             <a href="{{route('comment.edit_form', ['comment_id' => $comment->id])}}">編集する</a>
         @elseif ($comment->goods->contains('user_id', Auth::id()))
-            <a href="{{route('comment.delete_good', ['comment_id' => $comment->id])}}">いいね済み</a> 
-        @elseif (Auth::check()) 
+            <a href="{{route('comment.delete_good', ['comment_id' => $comment->id])}}">いいね済み</a>
+        @elseif (Auth::check())
             <a href="{{route('comment.good', ['comment_id' => $comment->id])}}">いいね</a>
-            
+
         @endif
 
         <img src="{{ $comment->user->image_pass }}" alt="" width="30">

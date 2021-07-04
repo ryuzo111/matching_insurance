@@ -40,13 +40,13 @@ class User extends Authenticatable
 	}
 
 	//フォローしている人
-	public function followers()
+	public function following_user()
 	{
 		return $this->hasMany('App\Models\Relationship', 'follower_id');
 	}
 
 	//フォローされている人
-	public function followees()
+	public function followed_user()
 	{
 		return $this->hasMany('App\Models\Relationship', 'followed_id');
 	}

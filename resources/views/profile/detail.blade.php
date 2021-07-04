@@ -10,7 +10,19 @@
 	@else
 		<img src="{{ asset('storage/default/default.jpeg') }}" alt="" width="100">
 	@endif
-	<p>{{ count($user->followees) }}フォロー中　{{ count($user->followers ) }}フォロワー</p>
+	@auth
+		@if ($is_following)
+			<a href="{{ route('unfollow', ['followed_id' => $user->id])}}" onclick="return confirm('フォロー解除しますか？');">フォロー中</a>
+		@elseif ($user->id != Auth::id())
+			<a href="{{ route('follow', ['followed_id' => $user->id]) }}">フォローする</a>
+		@endif
+	@endauth
+	@if ($is_followed)
+		フォローされています
+	@endif
+	<p><a href="{{ route('following', ['following_user_id' => $user->id])}}">{{ count($user->following_user) }}フォロー中</a>
+		<a href="{{ route('followers', ['followed_user_id' => $user->id])}}">{{ count($user->followed_user ) }}フォロワー</a>
+	</p>
 	<p>【名前】{{ $user->name }}</p>
 	<p>【メールアドレス】{{ $user->email }}</p>
 	<p>【年齢】

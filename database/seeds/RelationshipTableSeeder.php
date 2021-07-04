@@ -11,6 +11,39 @@ class RelationshipTableSeeder extends Seeder
      */
     public function run()
     {
-		factory(App\Models\Relationship::class, 10)->create();
+        $param = [
+            'follower_id' => 1,
+            'followed_id' => 2,
+        ];
+
+        DB::table('relationships')->insert($param);
+
+        $param = [
+            'follower_id' => 5,
+            'followed_id' => 2,
+        ];
+
+        DB::table('relationships')->insert($param);
+
+        $param = [
+            'follower_id' => 6,
+            'followed_id' => 2,
+        ];
+
+        DB::table('relationships')->insert($param);
+
+        $param = [
+            'follower_id' => 2,
+            'followed_id' => 4,
+        ];
+
+        DB::table('relationships')->insert($param);
+
+        $param = [
+            'follower_id' => 2,
+            'followed_id' => 5,
+        ];
+
+        DB::table('relationships')->insert($param);
     }
 }

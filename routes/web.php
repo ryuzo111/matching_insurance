@@ -72,6 +72,13 @@ Route::group(['prefix' => 'family_ins', 'middleware' => 'auth:user'], function (
 	Route::get('/delete', 'FamilyInsController@delete')->name('family_ins.delete');
 });
 
+Route::group(['prefix' => 'relationship', 'middleware' => 'auth:user'], function () {
+	Route::get('/following', 'RelationshipController@following')->name('following');//フォロー中
+	Route::get('/followers', 'RelationshipController@followers')->name('followers');//フォロワー
+	Route::get('/follow', 'RelationshipController@follow')->name('follow');
+	Route::get('/unfollow', 'RelationshipController@unfollow')->name('unfollow');
+});
+
 /*
  * Admin
  */
