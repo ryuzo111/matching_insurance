@@ -84,8 +84,15 @@
             <a href="{{route('comment.good', ['comment_id' => $comment->id])}}">いいね</a>
 
         @endif
+    
+    </br>
 
-        <img src="{{ $comment->user->image_pass }}" alt="" width="30">
+        @if ($comment->user->image_pass)
+		    <img src="{{ $comment->user->image_pass }}" alt="" width="30">
+		    <img src="{{ asset('storage/image/' . $comment->user->image_pass)}}" alt="" width="30"> 
+	    @else
+		    <img src="{{ asset('storage/default/default.jpeg') }}" alt="" width="30">
+	    @endif
         <p>
             名前 : {{ $comment->user->name }}
             コメント時間 : {{ $comment->created_at }}
