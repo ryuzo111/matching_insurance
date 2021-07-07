@@ -59,14 +59,34 @@ class ChatController extends Controller
         return redirect()->back()->with('success', '送信しました。');
     }
 
+    public function sendMessage(Request $request)
+    {
+        $updated_chat_list = $this->chat->storeAndGetUpdatedChatList($request);
+
+        $json = ['chats' => $updated_chat_list];
+		return response()->json($json);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function removeMessage(Request $request)
     {
-        //
+        $list = $this->chat->deleteChat($request);
+        $json = ['chats' => $list];
+		return response()->json($json);
+        
+    }
+
+    public function editMessage(Request $request)
+    {
+        $updated_chat_list = $this->chat->editAndGetUpdatedChatList($request);
+
+        $json = ['chats' => $updated_chat_list];
+		return response()->json($json);
+        
     }
 }

@@ -73,7 +73,10 @@ Route::group(['prefix' => 'chat', 'middleware' => 'auth:user'], function () {
 	Route::get('/{receive_user}/{send_user}', 'ChatController@index')->name('chat.index');
 	Route::post('/{receive_user}/{send_user}/store', 'ChatController@store')->name('chat.store');
 
-	Route::get('/{receive_user}/{send_user}/ajax', 'ChatController@getData');
+	Route::get('/{receive_user}/{send_user}/messages_list_api', 'ChatController@getData');
+	Route::post('/{receive_user}/{send_user}/send_message_api', 'ChatController@sendMessage');
+	Route::post('/{receive_user}/{send_user}/remove_message_api', 'ChatController@removeMessage');
+	Route::post('/{receive_user}/{send_user}/edit_message_api', 'ChatController@editMessage');
 });
 
 
