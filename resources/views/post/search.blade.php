@@ -18,7 +18,12 @@
 
 @foreach ($posts as $post)
     <div>
-        <img src="{{ $post->user->image_pass }}" alt="" width="30">
+        @if ($post->user->image_pass)
+		    <img src="{{ $post->user->image_pass }}" alt="" width="30">
+		    <img src="{{ asset('storage/image/' . $post->user->image_pass)}}" alt="" width="30"> 
+	    @else
+		    <img src="{{ asset('storage/default/default.jpeg') }}" alt="" width="30">
+	    @endif
         <p>
             名前 : {{ $post->user->name }}
             タイトル : {{ $post->title }}

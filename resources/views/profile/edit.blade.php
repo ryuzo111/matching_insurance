@@ -15,7 +15,7 @@
 	<img src="{{ asset('storage/image/' . $user->image_pass)}}" alt="" width="100">
 	<button onclick="location. href='{{route('profile.image_delete', ['id' => $user->id])}}'">画像削除</button>
 @else
-	<p>登録なし</p>
+	<img src="{{ asset('storage/default/default.jpeg') }}" alt="" width="100">
 @endif
 <div>
 	{{Form::open(['url' => route('profile.edit', [$user->id]), 'files' => true])}}
