@@ -24,7 +24,6 @@
 		<a href="{{ route('followers', ['followed_user_id' => $user->id])}}">{{ count($user->followed_user ) }}フォロワー</a>
 	</p>
 	<p>【名前】{{ $user->name }}</p>
-	<p>【メールアドレス】{{ $user->email }}</p>
 	<p>【年齢】
 	@if ($user->age)
 		{{ $user->age }}</p>
@@ -74,10 +73,11 @@
 @endif
 <hr>
 <div>家族加入保険</div>
-@if (Auth::id() == $user->id)
-	<a href="{{ route('family_ins.create') }}">家族加入保険追加</a>
-@endif
-<div>
+@if (Auth::check())
+	@if (Auth::id() == $user->id)
+		<a href="{{ route('family_ins.create') }}">家族加入保険追加</a>
+	@endif
+	<div>
 	@if ($family_insurances->isEmpty())
 		<p>登録無し</p>
 	@endif
@@ -94,6 +94,9 @@
 		<br>
 	@endforeach
 </div>
+@else
+<a href="{{ route('login') }}">ログイン者のみ家族加入保険を閲覧できます</a>
+@endif
 
 <hr>
 <div>投稿した悩み</div>
