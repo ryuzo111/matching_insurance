@@ -18,11 +18,13 @@ class DatabaseSeeder extends Seeder
         $this->call(CommentTableSeeder::class);
         $this->call(Family_insuranceTableSeeder::class);
         $this->call(Interested_insuranceTableSeeder::class);
+        $this->call(RelationshipTableSeeder::class);
 
         // factory(App\Models\Post::class, 15)->create();
         // factory(App\Models\Comment::class, 15)->create();
         factory(App\Models\Good::class, 15)->create();
-        factory(App\Models\Relationship::class, 15)->create();
+        //factory(App\Models\Relationship::class, 15)->create();
+        factory(App\Models\Contact::class, 15)->create();
 
         //postsテーブルとusersテーブルを3件作成する
         $posts = factory(App\Models\Post::class, 3)->create();

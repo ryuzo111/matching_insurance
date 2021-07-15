@@ -5,7 +5,13 @@
 
 
 <h1>悩み詳細</h1>
-<div><img src="{{ $post->user->image_pass }}" alt="" width="30">
+<div>
+    @if ($post->user->image_pass)
+	    <img src="{{ $post->user->image_pass }}" alt="" width="30">
+	    <img src="{{ asset('storage/image/' . $post->user->image_pass)}}" alt="" width="30"> 
+    @else
+	    <img src="{{ asset('storage/default/default.jpeg') }}" alt="" width="30">
+    @endif
     <p>
         名前 : <a href="{{ route('profile', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a>
         タイトル : {{ $post->title }}
@@ -69,17 +75,24 @@
     <p>コメント一覧</p>
     @foreach ($post->comments as $comment)
 
-        @if ($comment->user_id === Auth::id()) 
+        @if ($comment->user_id === Auth::id())
             <a href="{{route('comment.delete', ['comment_id' => $comment->id])}}">削除する</a>
             <a href="{{route('comment.edit_form', ['comment_id' => $comment->id])}}">編集する</a>
         @elseif ($comment->goods->contains('user_id', Auth::id()))
-            <a href="{{route('comment.delete_good', ['comment_id' => $comment->id])}}">いいね済み</a> 
-        @elseif (Auth::check()) 
+            <a href="{{route('comment.delete_good', ['comment_id' => $comment->id])}}">いいね済み</a>
+        @elseif (Auth::check())
             <a href="{{route('comment.good', ['comment_id' => $comment->id])}}">いいね</a>
-            
-        @endif
 
-        <img src="{{ $comment->user->image_pass }}" alt="" width="30">
+        @endif
+    
+    </br>
+
+        @if ($comment->user->image_pass)
+		    <img src="{{ $comment->user->image_pass }}" alt="" width="30">
+		    <img src="{{ asset('storage/image/' . $comment->user->image_pass)}}" alt="" width="30"> 
+	    @else
+		    <img src="{{ asset('storage/default/default.jpeg') }}" alt="" width="30">
+	    @endif
         <p>
             名前 : {{ $comment->user->name }}
             コメント時間 : {{ $comment->created_at }}

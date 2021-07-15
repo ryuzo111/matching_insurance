@@ -11,16 +11,14 @@
 |
  */
 
-Route::get('/', function () {
-	return view('welcome');
-});
+Route::get('/', 'PostController@index');
 
 Auth::routes();
 
 /*
  * ログイン前
  */
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PostController@index')->name('home');
 Route::get('/post', 'PostController@index')->name('post.index');
 Route::get('/post/search', 'PostController@search')->name('post.search');
 Route::get('/post/detail/', 'PostController@detail')->name('post.detail');
@@ -29,10 +27,13 @@ Route::get('contact', 'ContactController@contactForm')->name('contact.contact_fo
 Route::post('contact', 'ContactController@contact')->name('contact.contact');
 Route::get('/ranking/comment', 'RankingController@comment')->name('ranking.comment');
 Route::get('/ranking/user', 'RankingController@user')->name('ranking.user');
-// //ログイン前にDMボタンを押した場合、ログイン画面に遷移させる
-// Route::redirect('/chat/{receive_user}', function () {
-// 	return view('home');
-// });
+
+Route::get('promotion', function () {
+	return view('description.promotion');
+})->name('promotion');
+Route::get('prohibition', function () {
+	return view('description.prohibition');
+})->name('prohibition');
 
 /*
  * ログイン後
@@ -58,11 +59,11 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth:user'], function () {
-    Route::get('/edit/{id}', 'ProfileController@edit')->name('profile.edit');
-    Route::post('/edit/{id}', 'ProfileController@update');
-    Route::get('/edit_pass/{id}', 'ProfileController@edit_pass')->name('profile.edit_pass');
-    Route::post('/edit_pass/{id}', 'ProfileController@update_pass');
-    Route::get('/image_delete/{id}', 'ProfileController@image_delete')->name('profile.image_delete');
+	Route::get('/edit/{id}', 'ProfileController@edit')->name('profile.edit');
+	Route::post('/edit/{id}', 'ProfileController@update');
+	Route::get('/edit_pass/{id}', 'ProfileController@edit_pass')->name('profile.edit_pass');
+	Route::post('/edit_pass/{id}', 'ProfileController@update_pass');
+	Route::get('/image_delete/{id}', 'ProfileController@image_delete')->name('profile.image_delete');
 });
 
 Route::group(['prefix' => 'family_ins', 'middleware' => 'auth:user'], function () {
@@ -86,12 +87,24 @@ Route::group(['prefix' => 'chat', 'middleware' => 'auth:user'], function () {
 });
 
 
+Route::group(['prefix' => 'relationship', 'middleware' => 'auth:user'], function () {
+	Route::get('/following', 'RelationshipController@following')->name('following');//フォロー中
+	Route::get('/followers', 'RelationshipController@followers')->name('followers');//フォロワー
+	Route::get('/follow', 'RelationshipController@follow')->name('follow');
+	Route::get('/unfollow', 'RelationshipController@unfollow')->name('unfollow');
+});
+
 /*
  * Admin
  */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 	Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
 	Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+	Route::get('contact', 'ContactController@index')->name('contact.index');
+	Route::get('answer', 'ContactController@showAnswerForm')->name('contact.show_answer_form');
+	Route::post('answer', 'ContactController@answer')->name('contact.answer');
+	Route::get('status', 'ContactController@changeStatus')->name('contact.change_status');
+	Route::get('/profile/{id}', 'ProfileController@adminOnlyDetail')->name('admin.profile');
 });
 
 Route::group(['prefix' => 'admin'], function () {

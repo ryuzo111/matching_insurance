@@ -89,10 +89,11 @@
 
         @yield('content')
     </div>
-   
 
     <footer>
 		<a class="footer-btn" href="{{route('contact.contact_form')}}">お問い合わせ</a>
+		<a class="footer-btn" href="{{route('promotion')}}">ほけんとーくとは</a>
+		<a class="footer-btn" href="{{route('prohibition')}}">禁止事項</a>
 	</footer>
 
     @yield('js')
