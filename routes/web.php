@@ -29,6 +29,10 @@ Route::get('contact', 'ContactController@contactForm')->name('contact.contact_fo
 Route::post('contact', 'ContactController@contact')->name('contact.contact');
 Route::get('/ranking/comment', 'RankingController@comment')->name('ranking.comment');
 Route::get('/ranking/user', 'RankingController@user')->name('ranking.user');
+// //ログイン前にDMボタンを押した場合、ログイン画面に遷移させる
+// Route::redirect('/chat/{receive_user}', function () {
+// 	return view('home');
+// });
 
 /*
  * ログイン後
@@ -70,8 +74,10 @@ Route::group(['prefix' => 'family_ins', 'middleware' => 'auth:user'], function (
 });
 
 Route::group(['prefix' => 'chat', 'middleware' => 'auth:user'], function () {
-	Route::get('/{receive_user}/{send_user}', 'ChatController@index')->name('chat.index');
-	Route::post('/{receive_user}/{send_user}/store', 'ChatController@store')->name('chat.store');
+
+	// Route::get('/{receive_user}/{send_user}', 'ChatController@index')->name('chat.index');
+	Route::get('/', 'ChatController@index')->name('chat.index');
+	// Route::post('/{receive_user}/{send_user}/store', 'ChatController@store')->name('chat.store');
 
 	Route::get('/{receive_user}/{send_user}/messages_list_api', 'ChatController@getData');
 	Route::post('/{receive_user}/{send_user}/send_message_api', 'ChatController@sendMessage');

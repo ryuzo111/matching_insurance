@@ -20,8 +20,18 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $receive_user, User $send_user)
+    public function index(Request $request)
     {
+        //送信者がログインユーザでない場合
+        if ($request->send_user_id != Auth::id()) {
+            return redirect(route('post.index'))->with('error', '不正な値が検知されました。');
+        }
+        //受信者と送信者が同一である場合
+        if ($request->receive_user_id == $request->send_user_id) {
+            return redirect(route('post.index'))->with('error', '送信できません');
+        }
+        $receive_user = $this->user->getDetailById($request->receive_user_id);
+        $send_user = $this->user->getDetailById($request->send_user_id);
         return view('chat/index', compact('receive_user', 'send_user'));
     }
 
@@ -38,26 +48,21 @@ class ChatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SendChatRule $request, User $receive_user, User $send_user )
-    {
-        //受信者が存在しない場合
-        if (!$this->user->getDetailById($receive_user->id)) {
-            return redirect()->back()->with('error', '不正な値が検知されました。');
-        }
+    // public function store(SendChatRule $request, User $receive_user, User $send_user )
+    // {
+    //     //送信者がログインユーザでない場合
+    //     if ($send_user->id != Auth::id()) {
+    //         return redirect()->back()->with('error', '不正な値が検知されました。');
+    //     }
 
-        //送信者がログインユーザでない場合
-        if ($send_user->id != Auth::id()) {
-            return redirect()->back()->with('error', '不正な値が検知されました。');
-        }
-
-        //受信者と送信者が同一である場合
-        if ($receive_user == $send_user) {
-            return redirect()->back()->with('error', '送信できません。');
-        }
-        //保存
-        $this->chat->createChat($request, $receive_user, $send_user);
-        return redirect()->back()->with('success', '送信しました。');
-    }
+    //     //受信者と送信者が同一である場合
+    //     if ($receive_user == $send_user) {
+    //         return redirect()->back()->with('error', '送信できません。');
+    //     }
+    //     //保存
+    //     $this->chat->createChat($request, $receive_user, $send_user);
+    //     return redirect()->back()->with('success', '送信しました。');
+    // }
 
     public function sendMessage(Request $request)
     {

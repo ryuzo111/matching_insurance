@@ -22,12 +22,10 @@
 </div> --}}
 
 <div id="chat">
-	<div id="chat-data" data-receive-user-id="{{ $receive_user->id }}" data-send-user-id="{{ Auth::id() }}" data-base-url="{{ env('BASE_URL') }}">
+	<div id="chat-data" data-receive-user-id="{{ $receive_user->id }}" data-send-user-id="{{ Auth::id() }}" data-base-url="{{ config('baseurl.baseurl') }}">
 	</div>
 
 	<div class="" v-for="(chat, index) in chats">
-		{{-- @{{ chat.receive_user_id }}を判定することで、左右のどちらかに寄せられないか？ --}}
-
 		<div v-if="chat.receive_user_id == loginId">
 			<p style="text-align: left">
 				@if ($receive_user->image_pass)
@@ -57,8 +55,6 @@
 		</div>
 	</div>
 
-
-
 	<form>
 		<div class="form-group">
 			<div class="input-group">
@@ -68,14 +64,12 @@
 
 		</div>
 	</form>
-
 </div>
 
 
 @endsection
 
 @section('js')
-
 	{{-- Vue.jsを読み込む --}}
 	<script src="https://unpkg.com/vue@next"></script>
 	{{-- Vueアプリケーション --}}

@@ -63,7 +63,7 @@ function getMessages() {
 
 	$.ajax({
 		type: "GET",
-		url: baseURL + `chat/${receiveUserId}/${loginId}/messages_list_api`,
+		url: `${baseURL}chat/${receiveUserId}/${loginId}/messages_list_api`,
 		dataType: "json",
 		// data: { "created_at":date }
 	}).done(function(results) {
