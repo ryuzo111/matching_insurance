@@ -22,7 +22,10 @@ class ChatController extends Controller
      */
     public function index(Request $request)
     {
-        //送信者がログインユーザでない場合
+        if (is_null($request->send_user_id)) {
+            return redirect()->route('post.index');
+        }
+        // 送信者がログインユーザでない場合
         if ($request->send_user_id != Auth::id()) {
             return redirect(route('post.index'))->with('error', '不正な値が検知されました。');
         }
