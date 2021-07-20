@@ -3,6 +3,15 @@
 @section('content')
 <div>プロフィール</div>
 
+@if ($user->id != Auth::id())
+	{{-- <a href="{{ route('chat.index', ['receive_user' => $user, 'send_user' => Auth::user()]) }}">DMを送る</a> --}}
+	<form action="{{ route('chat.index') }}" method="GET">
+		<input type="hidden" name="receive_user_id" value="{{ $user->id }}">
+		<input type="hidden" name="send_user_id" value="{{ Auth::id() }}">
+		<button type="submit">DMを送る</button>
+	</form>
+@endif
+
 <div>
 	@if ($user->image_pass)
 		<img src="{{ $user->image_pass }}" alt="" width="100">
