@@ -12,6 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -91,7 +96,6 @@
 		<a class="footer-btn" href="{{route('prohibition')}}">禁止事項</a>
 	</footer>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('js')
 </body>
 </html>

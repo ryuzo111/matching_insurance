@@ -20,5 +20,15 @@ class PostTableSeeder extends Seeder
         ];
 
         DB::table('posts')->insert($param);
+
+        $param = [
+            'user_id' => 2,
+            'title' => 'aa',
+            'trouble_type' => 1,
+            'insurance_target' => 1,
+            'trouble_content' => 'aaa',
+        ];
+
+        DB::table('posts')->insert($param);
     }
 }

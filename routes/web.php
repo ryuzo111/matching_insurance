@@ -27,6 +27,7 @@ Route::get('contact', 'ContactController@contactForm')->name('contact.contact_fo
 Route::post('contact', 'ContactController@contact')->name('contact.contact');
 Route::get('/ranking/comment', 'RankingController@comment')->name('ranking.comment');
 Route::get('/ranking/user', 'RankingController@user')->name('ranking.user');
+
 Route::get('promotion', function () {
 	return view('description.promotion');
 })->name('promotion');
@@ -54,6 +55,7 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
 		Route::get('/good', 'CommentController@good')->name('comment.good');
 		Route::get('/good/delete', 'CommentController@deleteGood')->name('comment.delete_good');
 	});
+
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth:user'], function () {
@@ -71,6 +73,19 @@ Route::group(['prefix' => 'family_ins', 'middleware' => 'auth:user'], function (
 	Route::post('/edit', 'FamilyInsController@update');
 	Route::get('/delete', 'FamilyInsController@delete')->name('family_ins.delete');
 });
+
+Route::group(['prefix' => 'chat', 'middleware' => 'auth:user'], function () {
+
+	// Route::get('/{receive_user}/{send_user}', 'ChatController@index')->name('chat.index');
+	Route::get('/', 'ChatController@index')->name('chat.index');
+	// Route::post('/{receive_user}/{send_user}/store', 'ChatController@store')->name('chat.store');
+
+	Route::get('/{receive_user}/{send_user}/messages_list_api', 'ChatController@getData');
+	Route::post('/{receive_user}/{send_user}/send_message_api', 'ChatController@sendMessage');
+	Route::post('/{receive_user}/{send_user}/remove_message_api', 'ChatController@removeMessage');
+	Route::post('/{receive_user}/{send_user}/edit_message_api', 'ChatController@editMessage');
+});
+
 
 Route::group(['prefix' => 'relationship', 'middleware' => 'auth:user'], function () {
 	Route::get('/following', 'RelationshipController@following')->name('following');//フォロー中
