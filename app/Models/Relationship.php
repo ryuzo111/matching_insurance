@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
+use App\Models\Post;
+use App\Models\Comment;
 
 class Relationship extends Model
 {
@@ -35,8 +38,8 @@ class Relationship extends Model
 	public function saveFollowByFollowedId($followed_id)
 	{
 		$relationship = $this->create([
-				'follower_id' => Auth::id(),
-				'followed_id' => $followed_id,
+			'follower_id' => Auth::id(),
+			'followed_id' => $followed_id,
 		]);
 
 		return true;
@@ -82,5 +85,23 @@ class Relationship extends Model
 	{
 		$is_followed = $this->where('follower_id', $follower_id)->where('followed_id', Auth::id())->exists();
 		return $is_followed;
+	}
+
+	public function getFollowedUsersPostsAndComments($request)
+	{
+		$followed = $this->where('follower_id', Auth::id())->get();
+		$posts = Post::whereIn('user_id', $followed->pluck('followed_id'))->get();
+		$comments = Comment::whereIn('user_id', $followed->pluck('followed_id'))->get();
+		$posts_and_comments = $posts->merge($comments)->sortByDesc('created_at');
+		$posts_and_comments = new LengthAwarePaginator(
+			$posts_and_comments->forPage($request->page, 10),
+			$posts_and_comments->count(),
+			10,
+			$request->page,
+			[
+				'path' => $request->url()
+			]
+		);
+		return $posts_and_comments;
 	}
 }

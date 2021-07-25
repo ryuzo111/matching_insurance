@@ -55,7 +55,6 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function () {
 		Route::get('/good', 'CommentController@good')->name('comment.good');
 		Route::get('/good/delete', 'CommentController@deleteGood')->name('comment.delete_good');
 	});
-
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth:user'], function () {
@@ -88,11 +87,13 @@ Route::group(['prefix' => 'chat', 'middleware' => 'auth:user'], function () {
 
 
 Route::group(['prefix' => 'relationship', 'middleware' => 'auth:user'], function () {
-	Route::get('/following', 'RelationshipController@following')->name('following');//フォロー中
-	Route::get('/followers', 'RelationshipController@followers')->name('followers');//フォロワー
+	Route::get('/following', 'RelationshipController@following')->name('following'); //フォロー中
+	Route::get('/followers', 'RelationshipController@followers')->name('followers'); //フォロワー
 	Route::get('/follow', 'RelationshipController@follow')->name('follow');
 	Route::get('/unfollow', 'RelationshipController@unfollow')->name('unfollow');
+	Route::get('/followed_content', 'RelationshipController@followedUsersPostsAndComments')->name('followed_content');
 });
+
 
 /*
  * Admin
