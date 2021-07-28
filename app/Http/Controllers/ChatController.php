@@ -38,6 +38,12 @@ class ChatController extends Controller
         return view('chat/index', compact('receive_user', 'send_user'));
     }
 
+    public function list()
+    {
+        list($dm_started_list, $dm_not_started_list) = $this->chat->getChatListByUserId(Auth::id());
+		return view('chat/list', compact('dm_started_list', 'dm_not_started_list'));
+    }
+
     public function getData(User $receive_user, User $send_user)
 	{
         $chats = $this->chat->getChatsBetweenTwoPersons($receive_user->id, $send_user->id);
