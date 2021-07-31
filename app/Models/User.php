@@ -51,6 +51,18 @@ class User extends Authenticatable
 		return $this->hasMany('App\Models\Relationship', 'followed_id');
 	}
 
+	//chatを送信する人
+	public function send_user()
+	{
+		return $this->hasMany('App\Models\Chat', 'send_user_id');
+	}
+
+	//chatを送信される人
+	public function receive_user()
+	{
+		return $this->hasMany('App\Models\Chat', 'receive_user_id');
+	}
+
 	public function getDetailById($id)
 	{
 		$user = $this->where('id', $id)->firstOrFail();

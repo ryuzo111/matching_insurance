@@ -60,6 +60,7 @@
 
                                 <ul class="dropdown-menu">
 									<li><a href="{{ route('profile', ['id' => Auth::user()->id]) }}">プロフィール</a></li>
+									<li><a href="{{ route('chat.list') }}">DM一覧</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

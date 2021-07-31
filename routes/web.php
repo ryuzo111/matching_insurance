@@ -84,6 +84,9 @@ Route::group(['prefix' => 'chat', 'middleware' => 'auth:user'], function () {
 	Route::post('/{receive_user}/{send_user}/send_message_api', 'ChatController@sendMessage');
 	Route::post('/{receive_user}/{send_user}/remove_message_api', 'ChatController@removeMessage');
 	Route::post('/{receive_user}/{send_user}/edit_message_api', 'ChatController@editMessage');
+
+	Route::get('/list', 'ChatController@list')->name('chat.list');
+
 });
 
 
