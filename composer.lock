@@ -1002,16 +1002,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.10.5",
+            "version": "v4.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f"
+                "reference": "6608f01670c3cc5079e18c1dab1104e002579143"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4432ba399e47c66624bc73c8c0f811e5c109576f",
-                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/6608f01670c3cc5079e18c1dab1104e002579143",
+                "reference": "6608f01670c3cc5079e18c1dab1104e002579143",
                 "shasum": ""
             },
             "require": {
@@ -1050,7 +1050,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2021-05-03T19:11:20+00:00"
+            "time": "2021-07-21T10:44:31+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1532,20 +1532,21 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.4.25",
+            "version": "v4.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "c1e29de6dc893b130b45d20d8051efbb040560a9"
+                "reference": "5194f18bd80d106f11efa8f7cd0fbdcc3af96ce6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/c1e29de6dc893b130b45d20d8051efbb040560a9",
-                "reference": "c1e29de6dc893b130b45d20d8051efbb040560a9",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/5194f18bd80d106f11efa8f7cd0fbdcc3af96ce6",
+                "reference": "5194f18bd80d106f11efa8f7cd0fbdcc3af96ce6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3"
+                "php": ">=7.1.3",
+                "symfony/polyfill-php80": "^1.16"
             },
             "type": "library",
             "autoload": {
@@ -1576,7 +1577,7 @@
             ],
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
-            "time": "2021-05-26T17:39:37+00:00"
+            "time": "2021-07-21T12:19:41+00:00"
         },
         {
             "name": "symfony/debug",
@@ -1631,21 +1632,22 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.4.25",
+            "version": "v4.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "047773e7016e4fd45102cedf4bd2558ae0d0c32f"
+                "reference": "958a128b184fcf0ba45ec90c0e88554c9327c2e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/047773e7016e4fd45102cedf4bd2558ae0d0c32f",
-                "reference": "047773e7016e4fd45102cedf4bd2558ae0d0c32f",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/958a128b184fcf0ba45ec90c0e88554c9327c2e9",
+                "reference": "958a128b184fcf0ba45ec90c0e88554c9327c2e9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1.3",
-                "symfony/event-dispatcher-contracts": "^1.1"
+                "symfony/event-dispatcher-contracts": "^1.1",
+                "symfony/polyfill-php80": "^1.16"
             },
             "conflict": {
                 "symfony/dependency-injection": "<3.4"
@@ -1655,7 +1657,7 @@
                 "symfony/event-dispatcher-implementation": "1.1"
             },
             "require-dev": {
-                "psr/log": "~1.0",
+                "psr/log": "^1|^2|^3",
                 "symfony/config": "^3.4|^4.0|^5.0",
                 "symfony/dependency-injection": "^3.4|^4.0|^5.0",
                 "symfony/error-handler": "~3.4|~4.4",
@@ -1693,7 +1695,7 @@
             ],
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
-            "time": "2021-05-26T17:39:37+00:00"
+            "time": "2021-07-23T15:41:52+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -2199,16 +2201,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.23.0",
+            "version": "v1.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "2df51500adbaebdc4c38dea4c89a2e131c45c8a1"
+                "reference": "9174a3d80210dca8daa7f31fec659150bbeabfc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2df51500adbaebdc4c38dea4c89a2e131c45c8a1",
-                "reference": "2df51500adbaebdc4c38dea4c89a2e131c45c8a1",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/9174a3d80210dca8daa7f31fec659150bbeabfc6",
+                "reference": "9174a3d80210dca8daa7f31fec659150bbeabfc6",
                 "shasum": ""
             },
             "require": {
@@ -2258,7 +2260,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2021-05-27T09:27:20+00:00"
+            "time": "2021-05-27T12:26:48+00:00"
         },
         {
             "name": "symfony/polyfill-php56",
@@ -2420,6 +2422,72 @@
                 "shim"
             ],
             "time": "2021-05-27T09:17:38+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php80",
+            "version": "v1.23.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php80.git",
+                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/1100343ed1a92e3a38f9ae122fc0eb21602547be",
+                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.23-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ion Bazan",
+                    "email": "ion.bazan@gmail.com"
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2021-07-28T13:41:28+00:00"
         },
         {
             "name": "symfony/process",
@@ -2903,16 +2971,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.13.0",
+            "version": "2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "2edbc73a4687d9085c8f20f398eebade844e8424"
+                "reference": "fdf92f03e150ed84d5967a833ae93abffac0315b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/2edbc73a4687d9085c8f20f398eebade844e8424",
-                "reference": "2edbc73a4687d9085c8f20f398eebade844e8424",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/fdf92f03e150ed84d5967a833ae93abffac0315b",
+                "reference": "fdf92f03e150ed84d5967a833ae93abffac0315b",
                 "shasum": ""
             },
             "require": {
@@ -2960,7 +3028,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2021-06-04T12:00:00+00:00"
+            "time": "2021-07-13T12:00:00+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -4394,6 +4462,7 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
+            "abandoned": true,
             "time": "2015-07-28T20:34:47+00:00"
         },
         {
