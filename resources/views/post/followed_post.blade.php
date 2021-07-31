@@ -2,22 +2,15 @@
 
 @section('content')
 
-<h1>掲示版(フォローしているユーザーのみ)</h1>
+<h1>フォロー者投稿</h1>
 @if (empty($posts_and_comments)) 
-    <p>フォローユーザーの投稿とコメントはありません</p>
+    <p>投稿とコメントはありません</p>
 @else
-<p>
-    {{ ($posts_and_comments->currentPage()-1) * $posts_and_comments->perPage()+1 }} - 
-    {{ (($posts_and_comments->currentPage()-1) * $posts_and_comments->perPage()+1) + (count($posts_and_comments)-1) }} 件 
-
-    /{{ $posts_and_comments->total() }} 件を表示しています。
- </p>
  
 
 @foreach ($posts_and_comments as $post_and_comment)
     {{-- postか確認するコード --}}
     @if (!empty($post_and_comment->trouble_content))
-        <p>悩み投稿</p>
         @if ($post_and_comment->user->image_pass)
 		    <img src="{{ $post_and_comment->user->image_pass }}" alt="" width="30">
 		    <img src="{{ asset('storage/image/' . $post_and_comment->user->image_pass)}}" alt="" width="30"> 
@@ -79,7 +72,6 @@
     <br>
 
     @else
-    <p>コメント</p>
 
     @if ($post_and_comment->user->image_pass)
         <img src="{{ $post_and_comment->user->image_pass }}" alt="" width="30">

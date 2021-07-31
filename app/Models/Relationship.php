@@ -89,9 +89,10 @@ class Relationship extends Model
 
 	public function getFollowedUsersPostsAndComments($request)
 	{
-		$followed = $this->where('follower_id', Auth::id())->get();
-		$posts = Post::whereIn('user_id', $followed->pluck('followed_id'))->get();
-		$comments = Comment::whereIn('user_id', $followed->pluck('followed_id'))->get();
+		// ログインユーザーがフォローしているユーザーのid
+		$following_users_id = $this->where('follower_id', Auth::id())->pluck('followed_id');
+		$posts = Post::whereIn('user_id', $following_users_id)->get();
+		$comments = Comment::whereIn('user_id', $following_users_id)->get();
 		$posts_and_comments = $posts->merge($comments)->sortByDesc('created_at');
 		$posts_and_comments = new LengthAwarePaginator(
 			$posts_and_comments->forPage($request->page, 10),
