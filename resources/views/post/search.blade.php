@@ -36,7 +36,7 @@
     </br>
     <input name="start_time" type="date" value="{{$request->start_time ?? null}}" placeholder="開始日">
     <i>〜</i>
-    <input name="end_time" type="date" value="{{$reqeust->end_time ?? null}}" placeholder="終了日">
+    <input name="end_time" type="date" value="{{$request->end_time ?? null}}" placeholder="終了日">
     </br>
     <input type="submit" value="検索する">
 </form>
@@ -113,6 +113,6 @@
     <br>
     
 @endforeach
-{{ $posts->appends(['word' => $request->word])->links() }}
+{{ $posts->appends(['word' => $request->word, 'trouble_type' => $request->trouble_type, 'insurance_target' => $request->insurance_target, 'interested_insurances' => $request->interested_insurances, 'start_time' => $request->start_time, 'end_time' => $request->end_time])->links() }}
 
 @endsection

@@ -44,8 +44,6 @@ class PostController extends Controller
         // return view('post/index', compact('posts', 'request'));
 
         $param = $request->query();
-        // dd(in_array(1, $request->trouble_type));
-        // dd(in_array(1, $request->insurance_target));
         $posts = $this->post->getSearchResults($param);
 
         return view('post/search', compact('posts', 'request'));

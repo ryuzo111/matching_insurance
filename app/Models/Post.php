@@ -34,15 +34,19 @@ class Post extends Model
     {
         $query = Post::query();
         if (!empty($param['word'])) {
-            $query->where('title', 'like', '%' . $param['word'] . '%');
+            $query->where('title', 'like', '%' . $param['word'] . '%')
+                ->orWhere('trouble_content', 'like', '%' . $param['word'] . '%')
+                ->orWhereHas('user', function ($query) use ($param) {
+                    $query->where('name', 'like', '%' . $param['word'] . '%');
+                });
         }
 
         if (!empty($param['trouble_type'])) {
-            $query->where('trouble_type', $param['trouble_type']);
+            $query->whereIn('trouble_type', $param['trouble_type']);
         }
 
         if (!empty($param['insurance_target'])) {
-            $query->where('insurance_target', $param['insurance_target']);
+            $query->whereIn('insurance_target', $param['insurance_target']);
         }
 
         if (!empty($param['interested_insurances'])) {
@@ -53,16 +57,16 @@ class Post extends Model
                 $all_interested_posts = $all_interested_posts->merge($post);
             }
 
-            $all_interested_posts = $all_interested_posts->pluck('post_id')->unique();
-            if (!empty($all_interested_posts)) {
-                $query->whereIn('id', $all_interested_posts->toArray());
+            $all_interested_posts_id = $all_interested_posts->pluck('post_id')->unique();
+            if (!empty($all_interested_posts_id)) {
+                $query->whereIn('id', $all_interested_posts_id->toArray());
             }
         }
         if (!empty($param['start_time'])) {
             $query->whereDate('created_at', '>=', $param['start_time']);
         }
         if (!empty($param['end_time'])) {
-            $query->whereDate('created_at', '>=', $param['end_time']);
+            $query->whereDate('created_at', '<=', $param['end_time']);
         }
 
         $posts = $query->orderBy('created_at', 'desc')->paginate(10);
