@@ -10,7 +10,7 @@
 	@else
 		<img src="{{ asset('storage/default/default.jpeg') }}" alt="" width="50">
 	@endif
-	メッセージ : 
+	最新メッセージ : 
 	@if (mb_strlen($dm['message']) > 30)
 		{{ mb_substr($dm['message'], 0, 30) }}
 	@else
@@ -26,7 +26,7 @@
 	<hr>
 @endforeach
 
-<h1>まだ開始していないDM一覧</h1>
+<h1>未返信DM</h1>
 @foreach ($dm_not_started_list as $dm)
 	{{ $dm['user_name'] }}
 	@if ($dm['image_pass'])
@@ -34,7 +34,7 @@
 	@else
 		<img src="{{ asset('storage/default/default.jpeg') }}" alt="" width="50">
 	@endif
-	メッセージ : {{ $dm['message'] }}
+	最新メッセージ : {{ $dm['message'] }}
 	{{ $dm['created_at'] }}
 
 	<form action="{{ route('chat.index') }}" method="GET">
