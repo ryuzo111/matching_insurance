@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Relationship;
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Comment;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 
 class RelationshipController extends Controller
 {
@@ -54,4 +58,9 @@ class RelationshipController extends Controller
 		return back()->with('success', 'フォロー解除しました');
 	}
 
+	public function followedUsersPostsAndComments(Request $request)
+	{
+		$posts_and_comments = $this->relationship->getFollowedUsersPostsAndComments($request);
+		return view('post.followed_post', compact('posts_and_comments'));
+	}
 }

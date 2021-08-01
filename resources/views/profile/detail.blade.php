@@ -87,6 +87,10 @@
 		<a href="{{ route('family_ins.create') }}">家族加入保険追加</a>
 	@endif
 	<div>
+	@if ($family_insurances->isEmpty())
+		<p>登録無し</p>
+	@endif
+	<div>
 		@if ($family_insurances->isEmpty())
 			<p>登録無し</p>
 		@endif
