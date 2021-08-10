@@ -28,7 +28,7 @@
     <input type="checkbox" name="interested_insurances[]" value="life" {{ is_array($request->interested_insurances) && in_array('life', $request->interested_insurances) ? 'checked' : ''}}>生命保険
     <input type="checkbox" name="interested_insurances[]" value="medical" {{ is_array($request->interested_insurances) && in_array('medical', $request->interested_insurances) ? 'checked' : ''}}>医療保険
     <input type="checkbox" name="interested_insurances[]" value="cancer" {{ is_array($request->interested_insurances) && in_array('cancer', $request->interested_insurances) ? 'checked' : ''}}>がん保険
-    <input type="checkbox" name="interested_insurances[]" value="pension" {{ is_array($request->interested_insurances) && in_array('pension', $request->interested_insurances) ? 'checked' : ''}}>生命保険
+    <input type="checkbox" name="interested_insurances[]" value="pension" {{ is_array($request->interested_insurances) && in_array('pension', $request->interested_insurances) ? 'checked' : ''}}>年金保険
     <input type="checkbox" name="interested_insurances[]" value="saving" {{ is_array($request->interested_insurances) && in_array('saving', $request->interested_insurances) ? 'checked' : ''}}>貯蓄型の保険
     <input type="checkbox" name="interested_insurances[]" value="all_life" {{ is_array($request->interested_insurances) && in_array('all_life', $request->interested_insurances) ? 'checked' : ''}}>終身保険
     <input type="checkbox" name="interested_insurances[]" value="home" {{ is_array($request->interested_insurances) && in_array('home', $request->interested_insurances) ? 'checked' : ''}}>火災保険
