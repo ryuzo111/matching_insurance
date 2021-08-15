@@ -36,12 +36,15 @@ class PostController extends Controller
     public function search(Request $request)
     {
         //検索がセットされていない場合
-        if (is_null($request->word)) {
-            $posts = $this->post->getPaginatedPosts();
-        } else {
-            $posts = $this->post->getPaginatedSearchResults($request->word);
-        }
+        // if (is_null($request->word)) {
+        //     $posts = $this->post->getPaginatedPosts();
+        // } else {
+        //     $posts = $this->post->getPaginatedSearchResults($request->word);
+        // }
         // return view('post/index', compact('posts', 'request'));
+
+        $param = $request->query();
+        $posts = $this->post->getSearchResults($param);
 
         return view('post/search', compact('posts', 'request'));
     }

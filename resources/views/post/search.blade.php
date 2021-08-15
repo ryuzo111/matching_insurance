@@ -5,6 +5,39 @@
 <h1>保険の悩み一覧</h1>
 <form action="{{ route('post.search') }}" method="GET">
     <input type="text" name="word" value={{ old('word', $request->word) }}>
+    </br>
+    <label>悩みのタイプ</label>
+    <input type="checkbox" name="trouble_type[]" value="1" {{ is_array($request->trouble_type) && in_array(1, $request->trouble_type) ? 'checked' : ''}}>保険加入について
+    <input type="checkbox" name="trouble_type[]" value="2" {{ is_array($request->trouble_type) && in_array(2, $request->trouble_type) ? 'checked' : ''}}>現在加入の保険について
+    <input type="checkbox" name="trouble_type[]" value="3" {{ is_array($request->trouble_type) && in_array(3, $request->trouble_type) ? 'checked' : ''}}>健康告知について
+    <input type="checkbox" name="trouble_type[]" value="4" {{ is_array($request->trouble_type) && in_array(4, $request->trouble_type) ? 'checked' : ''}}>営業マンにおすすめされた保険について
+    <input type="checkbox" name="trouble_type[]" value="5" {{ is_array($request->trouble_type) && in_array(5, $request->trouble_type) ? 'checked' : ''}}>その他の悩み
+    </br>
+    <label>悩みの対象者</label>
+    <input type="checkbox" name="insurance_target[]" value="1" {{ is_array($request->insurance_target) && in_array(1, $request->insurance_target) ? 'checked' : ''}}>本人
+    <input type="checkbox" name="insurance_target[]" value="2" {{ is_array($request->insurance_target) && in_array(2, $request->insurance_target) ? 'checked' : ''}}>配偶者
+    <input type="checkbox" name="insurance_target[]" value="3" {{ is_array($request->insurance_target) && in_array(3, $request->insurance_target) ? 'checked' : ''}}>子供
+    <input type="checkbox" name="insurance_target[]" value="4" {{ is_array($request->insurance_target) && in_array(4, $request->insurance_target) ? 'checked' : ''}}>親
+    <input type="checkbox" name="insurance_target[]" value="5" {{ is_array($request->insurance_target) && in_array(5, $request->insurance_target) ? 'checked' : ''}}>祖母
+    <input type="checkbox" name="insurance_target[]" value="6" {{ is_array($request->insurance_target) && in_array(6, $request->insurance_target) ? 'checked' : ''}}>祖父
+    <input type="checkbox" name="insurance_target[]" value="7" {{ is_array($request->insurance_target) && in_array(7, $request->insurance_target) ? 'checked' : ''}}>孫
+    <input type="checkbox" name="insurance_target[]" value="8" {{ is_array($request->insurance_target) && in_array(8, $request->insurance_target) ? 'checked' : ''}}>友人
+    <input type="checkbox" name="insurance_target[]" value="9" {{ is_array($request->insurance_target) && in_array(9, $request->insurance_target) ? 'checked' : ''}}>その他
+    </br>
+    <label>興味のある保険</label>
+    <input type="checkbox" name="interested_insurances[]" value="life" {{ is_array($request->interested_insurances) && in_array('life', $request->interested_insurances) ? 'checked' : ''}}>生命保険
+    <input type="checkbox" name="interested_insurances[]" value="medical" {{ is_array($request->interested_insurances) && in_array('medical', $request->interested_insurances) ? 'checked' : ''}}>医療保険
+    <input type="checkbox" name="interested_insurances[]" value="cancer" {{ is_array($request->interested_insurances) && in_array('cancer', $request->interested_insurances) ? 'checked' : ''}}>がん保険
+    <input type="checkbox" name="interested_insurances[]" value="pension" {{ is_array($request->interested_insurances) && in_array('pension', $request->interested_insurances) ? 'checked' : ''}}>年金保険
+    <input type="checkbox" name="interested_insurances[]" value="saving" {{ is_array($request->interested_insurances) && in_array('saving', $request->interested_insurances) ? 'checked' : ''}}>貯蓄型の保険
+    <input type="checkbox" name="interested_insurances[]" value="all_life" {{ is_array($request->interested_insurances) && in_array('all_life', $request->interested_insurances) ? 'checked' : ''}}>終身保険
+    <input type="checkbox" name="interested_insurances[]" value="home" {{ is_array($request->interested_insurances) && in_array('home', $request->interested_insurances) ? 'checked' : ''}}>火災保険
+    <input type="checkbox" name="interested_insurances[]" value="other" {{ is_array($request->interested_insurances) && in_array('other', $request->interested_insurances) ? 'checked' : ''}}>その他   
+    </br>
+    <input name="start_time" type="date" value="{{$request->start_time ?? null}}" placeholder="開始日">
+    <i>〜</i>
+    <input name="end_time" type="date" value="{{$request->end_time ?? null}}" placeholder="終了日">
+    </br>
     <input type="submit" value="検索する">
 </form>
 <br>
@@ -80,6 +113,6 @@
     <br>
     
 @endforeach
-{{ $posts->appends(['word' => $request->word])->links() }}
+{{ $posts->appends(['word' => $request->word, 'trouble_type' => $request->trouble_type, 'insurance_target' => $request->insurance_target, 'interested_insurances' => $request->interested_insurances, 'start_time' => $request->start_time, 'end_time' => $request->end_time])->links() }}
 
 @endsection
