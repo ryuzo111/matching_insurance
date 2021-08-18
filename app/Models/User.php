@@ -130,4 +130,14 @@ class User extends Authenticatable
 		}])->get();
 		return $users;
 	}
+
+	public function getUserPosts($user_id) {
+		$posts = Post::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
+		return $posts;
+	}
+
+	public function getUserComments($user_id) {
+		$comments = Comment::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
+		return $comments;
+	}
 }

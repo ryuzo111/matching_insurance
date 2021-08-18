@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.login-page{
+  background-color: #FF6615 !important;
+}
+.login-box-body, .register-box-body {
+  border-radius: 10px;
+}

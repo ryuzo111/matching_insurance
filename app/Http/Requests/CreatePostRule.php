@@ -30,13 +30,13 @@ class CreatePostRule extends FormRequest
             'insurance_target' => ['required', 'integer', 'min:1', 'max:9'],
             'interested_insurances' => ['required', 'array'],
             'interested_insurances.*' => ['in:life,medical,cancer,pension,saving,all_life,home,other'],
-            'trouble_content' => ['required', 'max:255'],            
+            'trouble_content' => ['required', 'max:255'],
         ];
     }
 
     public function messages() {
         return [
-            'title.required' => '「タイトル」は入力必須です。',
+            'title.required' => '「悩みのタイトル」は入力必須です。',
 
             'trouble_type.required' => '「悩みのタイプ」は入力必須です。',
             'trouble_type.min' => '「悩みのタイプ」に不正な値が入力されました。',
@@ -52,8 +52,8 @@ class CreatePostRule extends FormRequest
             'interested_insurances.array' => '「興味のある保険」に不正な値が入力されました。',
             'interested_insurances.*.in' => '「興味のある保険」に不正な値が入力されました。',
 
-            'trouble_content.required' => '「悩みの内容」は入力必須です。',
-            'trouble_content.max' => '「悩みの内容」は255文字以内でお願いいたします',
+            'trouble_content.required' => '「内容」は入力必須です。',
+            'trouble_content.max' => '「内容」は255文字以内でお願いいたします',
         ];
     }
 }

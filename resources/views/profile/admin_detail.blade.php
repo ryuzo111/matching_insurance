@@ -1,5 +1,7 @@
-@extends('layouts.app_admin')
-@section('title', 'Profile')
+@extends('adminlte::page')
+
+@section('title', 'AdminLTE')
+
 @section('content')
 <div>プロフィール</div>
 
