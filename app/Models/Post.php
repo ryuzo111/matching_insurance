@@ -164,5 +164,11 @@ class Post extends Model
             $interested_insurance->delete();
         });
         return true;
+        DB::transaction(function () use ($id, $post, $interested_insurance){
+           $post->delete();
+           $interested_insurance->delete();
+        });
+        return true;
+
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Comment;
 use App\Models\Relationship;
 use App\Http\Requests\EditProfileRule;
 use App\Http\Requests\EditPassRule;
@@ -33,7 +35,9 @@ class ProfileController extends Controller
 		$family_insurances = $user->family_insurances->sortBy('relationship');
 		$is_following = $this->relationship->canUnfollow($id);
 		$is_followed = $this->relationship->isFollowed($id);
-		return view('profile.detail', compact('user', 'family_insurances', 'is_following', 'is_followed'));
+		$user->posts = Post::where('user_id', $user->id)->orderBy('id', 'DESC')->take(3)->get();
+		$user->comments = Comment::where('user_id', $user->id)->orderBy('id', 'DESC')->take(3)->get();
+		return view('profile.detail', compact('user', 'family_insurances', 'is_following', 'is_followed', 'posts', 'comments'));
 	}
 
 	public function adminOnlyDetail($id)
