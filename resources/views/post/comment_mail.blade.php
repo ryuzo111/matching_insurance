@@ -10,10 +10,10 @@
     <table>
         <thead>
             <tr>
-                <th>カテゴリー</th>
-                <th>誰の？</th>
-                <th>内容</th>
-                <th>保険の種類</th>
+                <th>悩みの種類</th>
+                <th>悩みを抱えている人</th>
+                <th>悩みの内容</th>
+                <th>興味のある保険を表示</th>
             </tr>
         </thead>
         <tbody>

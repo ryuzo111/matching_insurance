@@ -19,6 +19,7 @@
 
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -33,7 +34,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ route('post.index') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -50,8 +51,8 @@
 						<li><a href="{{ route('followed_content')}}">フォロー者投稿</a></a><li>
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">ログイン</a></li>
+                            <li><a href="{{ route('register') }}">新規会員登録</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
@@ -65,7 +66,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            ログアウト
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -80,8 +81,17 @@
             </div>
         </nav>
 
+        @if (session('success'))
+            <div class="success" style="color:blue">{{ session('success') }}</div>
+        @endif
+
+        @if (session('error'))
+            <div class="error" style="color:red">{{ session('error') }}</div>
+        @endif
+
         @yield('content')
     </div>
+
     <footer>
 		<a class="footer-btn" href="{{route('contact.contact_form')}}">お問い合わせ</a>
 		<a class="footer-btn" href="{{route('promotion')}}">ほけんとーくとは</a>

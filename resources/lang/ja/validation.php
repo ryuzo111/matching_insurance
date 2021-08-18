@@ -95,16 +95,15 @@ return [
 		 */
 
 	'attributes' => [
-		'name' => '名前',
+		'name' => 'ユーザー名',
 		'email' => 'メールアドレス',
 		'age' => '年齢',
-		'children' => '子ども',
+		'children' => '子供',
 		'password' => 'パスワード',
 		'current_password' => '現在のパスワード',
 		'insurance_company' => '保険会社名',
 		'have_insurance_company' => '加入保険',
 		'have_insurance_content' => '加入保険説明',
 		'relationship' => '続柄',
-		'free comment' => 'フリーコメント',
 	],
 ];

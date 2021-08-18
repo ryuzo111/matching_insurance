@@ -1,44 +1,23 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
-<div class="container">
-<div class="box box-solid box-warning">
-<div class="box-header">
-<h1 class="box-title">お問い合わせ</h1>
-</div>
+<h1>お問い合わせ</h1>
 
-<div>
-	<div class="form-group row">
-	<div class="col-md-2 mb-3">
-		@guest
-		{{ Form::label('email', 'メールアドレス') }}
-	</div>
-	<div class="col-md-10">
-		{{ Form::open(['url' => route('contact.contact'), 'method' => 'POST']) }}
-				@if ($errors->has('email'))
-					<p>{{$errors->first('email')}}</p>
-				@endif
-				{{ Form::email('email', null, ['class' => 'contact-email', 'required', 'class' => 'form-control', 'id' => 'inputEmail']) }}
-			@endguest
-			@if ($errors->has('content'))
-				<p>{{$errors->first('content')}}</p>
-			@endif
-	</div>
-	</div>
-	<div class="form-group row">
-	<div class="col-md-2 mb-3">
-		{{ Form::label('content', 'お問い合わせ内容') }}
-	</div>
-	<div class="col-md-10">
-		{{ Form::textarea('content', null, ['class' => 'contact-content', 'rows' => '4', 'cols' => '47', 'required', 'class' => 'form-control', 'id' => 'textareaFreeComent']) }}
-	</div>
-	</div>
-	<div class="form-group row">
-	<div class="col-sm-12">
-		{{ Form::submit('運営に問い合わせる', ['class' => 'btn btn-warning']) }}
-	</div>
-	</div>
+{{ Form::open(['url' => route('contact.contact'), 'method' => 'POST']) }}
+	@guest
+		@if ($errors->has('email'))
+			<p>{{$errors->first('email')}}</p>
+		@endif
+		{{ Form::label('email','メールアドレス') }}
+		{{ Form::email('email', null, ['class' => 'contact-email', 'required']) }}
+	@endguest
+	@if ($errors->has('content'))
+		<p>{{$errors->first('content')}}</p>
+	@endif
+	{{ Form::label('content', 'お問い合わせ内容') }}
+	{{ Form::textarea('content', null, ['class' => 'contact-content', 'rows' => '4', 'cols' => '47', 'required']) }}
+	{{ Form::submit('運営に問い合わせる', ['class' => 'contact-submit']) }}
 
 {{ Form::close() }}
 
@@ -60,8 +39,5 @@
 	<textarea name="content" rows="4" cols="47"></textarea>
 	<input type="submit" value="運営に問い合わせる">
 </form> --}}
-</div>
-</div>
-</div>
 
 @endsection

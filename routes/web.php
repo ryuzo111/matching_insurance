@@ -11,14 +11,14 @@
 |
  */
 
-Route::get('/', 'LpController@index')->name('LP');
+Route::get('/', 'PostController@index');
 
 Auth::routes();
 
 /*
  * ログイン前
  */
-Route::get('/home', 'PostController@index')->name('index');
+Route::get('/home', 'PostController@index')->name('home');
 Route::get('/post', 'PostController@index')->name('post.index');
 Route::get('/post/search', 'PostController@search')->name('post.search');
 Route::get('/post/detail/', 'PostController@detail')->name('post.detail');
@@ -97,10 +97,6 @@ Route::group(['prefix' => 'relationship', 'middleware' => 'auth:user'], function
 	Route::get('/followed_content', 'RelationshipController@followedUsersPostsAndComments')->name('followed_content');
 });
 
-Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function () {
-	Route::get('/post', 'UserController@post')->name('user.post');
-	Route::get('/comment', 'UserController@comment')->name('user.comment');
-});
 
 /*
  * Admin
@@ -122,5 +118,3 @@ Route::group(['prefix' => 'admin'], function () {
 		return abort(404);
 	});
 });
-
-

@@ -92,7 +92,7 @@ class ChatController extends Controller
         $list = $this->chat->deleteChat($request);
         $json = ['chats' => $list];
 		return response()->json($json);
-
+        
     }
 
     public function editMessage(Request $request)
@@ -101,6 +101,6 @@ class ChatController extends Controller
 
         $json = ['chats' => $updated_chat_list];
 		return response()->json($json);
-
+        
     }
 }

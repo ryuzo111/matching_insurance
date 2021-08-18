@@ -1,51 +1,21 @@
-@extends('layout')
-
+@extends('layouts.app')
+@section('title', 'Profile')
+@section('content')
 @if ($errors->any())
 	@foreach ($errors->all() as $error)
 		<p class="text-danger">{{ $error }}</p>
 	@endforeach
 @endif
-
-@section('content')
-<div class="container">
-<div class="box box-solid box-warning">
-<div class="box-header">
-<h1 class="box-title">パスワード編集</h1>
-</div>
+<h2>パスワード編集</h2>
 
 <div>
-	{{ Form::open(['url' => route('profile.edit_pass', [$user->id]), 'files' => true]) }}
-    <div class="form-group row">
-	<div class="col-md-2 mb-3">
-		{{ Form::label('inputPassword', '新パスワード') }}
-	</div>
-	<div class="col-md-10">
-		{{ Form::password('inputPassword', ['class' => 'form-control', 'id' => 'inputPassword']) }}
-	</div>
-	</div>
-    <div class="form-group row">
-	<div class="col-md-2 mb-3">
-		{{ Form::label('inputPassword', '新パスワード(確認用)') }}
-	</div>
-	<div class="col-md-10">
-		{{ Form::password('inputPasswordConfirmation', ['class' => 'form-control', 'id' => 'inputPasswordConfirmation']) }}
-	</div>
-	</div>
-    <div class="form-group row">
-	<div class="col-md-2 mb-3">
-		{{ Form::label('inputCurrentPassword', '現在のパスワード') }}
-	</div>
-	<div class="col-md-10">
-		{{ Form::password('inputCurrentPassword', ['class' => 'form-control', 'id' => 'inputCurrentPassword']) }}
-	</div>
-	</div>
-	<div class="form-group row">
-	<div class="col-sm-12">
-		{{ Form::submit('変更', ['class' => 'btn btn-warning']) }}
-	</div>
-	</div>
+	{{Form::open(['url' => route('profile.edit_pass', [$user->id]), 'files' => true])}}
+		<p>【新パスワード】{{Form::password('password')}}</p>
+		<p>【新パスワード（確認用)】{{Form::password('password_confirmation')}}</p>
+		<p>【現在のパスワード】{{Form::password('current_password')}}</p>
+	{{Form::submit('変更')}}
 	{{Form::close()}}
 </div>
-</div>
-</div>
+	<a href="{{ route('profile.edit', ['id' => $user->id]) }}">プロフィール情報編集画面へ戻る</a><br>
+	<a href="{{ route('profile', ['id' => $user->id]) }}"> プロフィールへ戻る</a>
 @endsection

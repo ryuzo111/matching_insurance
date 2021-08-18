@@ -1,77 +1,22 @@
-@extends('layout')
-
+@extends('layouts.app')
+@section('title', 'Profile')
 @section('content')
-<div class="container">
-	<div class="top-button">
-	<a href="{{ route('profile', ['id' => Auth::id()]) }}"><button class="btn btn-default"><i class="fas fa-backward"> プロフィールへ戻る</i></button></a>
-	</div>
-	<div class="box box-solid box-warning">
-		<div class="box-header">
-		<h1 class="box-title">家族加入保険追加</h1>
-		</div>
-	<p>※配偶者・子供は、プロフィールの登録数以上は追加できません</p>
+@if ($errors->any())
+	@foreach ($errors->all() as $error)
+		<p class="text-danger">{{ $error }}</p>
+	@endforeach
+@endif
+<h2>家族加入保険追加</h2>
+<p>※配偶者・子供は、プロフィールの登録数以上は追加できません</p>
 
-		<div>
-			{{ Form::open() }}
-			<div class="form-group row has-feedback {{ $errors->has('relationship') ? 'has-error' : '' }}">
-				<div class="col-md-2 mb-3">
-					{{ Form::label('relationship', '続柄(必須)') }}
-				</div>
-				<div class="col-md-10">
-					{{ Form::select('relationship', config('relationship'), old('relationship'), ['class' => 'form-control', 'id' => 'relationship']) }}
-					@if ($errors->has('relationship'))
-						<span class="help-block">
-							<strong>{{ $errors->first('relationship') }}</strong>
-						</span>
-					@endif
-				</div>
-				</div>
-			<div class="form-group row has-feedback {{ $errors->has('age') ? 'has-error' : '' }}">
-				<div class="col-md-2 mb-3">
-					{{ Form::label('age', '年齢') }}
-				</div>
-				<div class="col-md-10">
-					{{ Form::select('age', config('age'), old('age'), ['class' => 'form-control', 'id' => 'age']) }}
-					@if ($errors->has('age'))
-						<span class="help-block">
-							<strong>{{ $errors->first('age') }}</strong>
-						</span>
-					@endif
-				</div>
-			</div>
-				<div class="form-group row has-feedback {{ $errors->has('have_insurance_company') ? 'has-error' : '' }}">
-				<div class="col-md-2 mb-3">
-					{{ Form::label('have_insurance_company', '加入保険') }}
-				</div>
-				<div class="col-md-10">
-					{{ Form::textarea('have_insurance_company', old('have_insurance_company'), ['placeholder' => '(例)〇〇保険会社の〇〇保険', 'style' => 'height:60px', 'class' => 'form-control', 'id' => 'have_insurance_company']) }}
-					@if ($errors->has('have_insurance_company'))
-						<span class="help-block">
-							<strong>{{ $errors->first('have_insurance_company') }}</strong>
-						</span>
-					@endif
-				</div>
-			</div>
-			<div class="form-group row has-feedback {{ $errors->has('have_insurance_content') ? 'has-error' : '' }}">
-				<div class="col-md-2 mb-3">
-					{{ Form::label('have_insurance_content', '加入保険説明(必須)') }}
-				</div>
-				<div class="col-md-10">
-					{{ Form::textarea('have_insurance_content', old('have_insurance_content'), ['class' => 'form-control', 'id' => 'have_insurance_content']) }}
-					@if ($errors->has('have_insurance_content'))
-						<span class="help-block">
-							<strong>{{ $errors->first('have_insurance_content') }}</strong>
-						</span>
-					@endif
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-sm-12">
-					{{ Form::submit('追加', ['class' => 'btn btn-warning']) }}
-				</div>
-			</div>
-			{{ Form::close() }}
-		</div>
-	</div>
+<div>
+	{{Form::open()}}
+		<p>【続柄(必須)】{{Form::select('relationship', config('relationship'), old('relationship'))}}</p>
+		<p>【年齢】{{Form::number('age', old('age'))}}</p>
+		<p>【加入保険】</p>{{Form::textarea('have_insurance_company', old('have_insurance_company'), ['placeholder' => '(例)〇〇保険会社の〇〇保険', 'style' => 'height:60px'])}}<br>
+		<p>【加入保険説明(必須)】</p>{{Form::textarea('have_insurance_content', old('have_insurance_content'))}}<br>
+	{{Form::submit('追加')}}
+	{{Form::close()}}
 </div>
+<a href="{{ route('profile', ['id' => Auth::id()]) }}"> プロフィールへ戻る</a>
 @endsection

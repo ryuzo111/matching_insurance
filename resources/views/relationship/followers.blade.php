@@ -1,13 +1,6 @@
-@extends('layout')
+@extends('layouts.app')
 @section('content')
-<div class="container">
-<div>
-<a href="{{ route('profile', ['id' => $followed_user_id]) }}"><button class="btn btn-default">プロフィールへ戻る</button></a>
-</div>
-<div class="box box-solid box-warning">
-<div class="box-header">
-<h1 class="box-title">フォロワー</h1>
-</div>
+<h2>フォロワー</h2>
 
 <div>
 	@if ($followers->isEmpty())
@@ -34,7 +27,6 @@
 		</p>
 		@endforeach
 	@endif
-</div>
-</div>
+	<p></p><a href="{{ route('profile', ['id' => $followed_user_id]) }}"> プロフィールへ戻る</a></p>
 </div>
 @endsection
