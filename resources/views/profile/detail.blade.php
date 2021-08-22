@@ -91,7 +91,7 @@
 			<tr>
 				<th>子ども</th>
 				@isset ($user->children)
-				<td>{{ $user->children }}人</td>
+				<td>{{ Config::get('children')[$user->children] }}</td>
 				@else
 				<td>登録なし</td>
 				@endisset
@@ -168,7 +168,7 @@
 	@endempty
 	@isset ($user->posts[0])
 	@foreach ($user->posts as $post)
-		<p class="tag"><a href="{{ route('post.detail', ['post_id' => $post->id]) }}">{{ $post->title }}</a></p>
+		<p class="tag" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><a href="{{ route('post.detail', ['post_id' => $post->id]) }}">{{ $post->title }}</a></p>
 	@endforeach
 	<p class="tag"><a class="btn btn-warning" href="{{ route('user.post', ['user_id' => $user->id]) }}">もっと見る</a></p>
 	@endisset
@@ -186,7 +186,7 @@
 	@endempty
 	@isset ($user->comments[0])
 	@foreach ($user->comments as $comment)
-		<p class="tag"><a href="{{ route('post.detail', ['post_id' => $comment->post_id]) }}">{{ $comment->comment }}</a></p>
+		<p class="tag" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><a href="{{ route('post.detail', ['post_id' => $comment->post_id]) }}">{{ $comment->comment }}</a></p>
 	@endforeach
 	<p class="tag"><a class="btn btn-warning" href="{{ route('user.comment', ['user_id' => $user->id]) }}">もっと見る</a></p>
 	@endisset

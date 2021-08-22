@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <!-- /.col -->
-                    <div class="col-xs-4">
+                    <div class="col-xs-4 login-button">
                         <button type="submit" class="btn btn-warning btn-block btn-flat">
                             {{ trans('adminlte::adminlte.sign_in') }}
                         </button>

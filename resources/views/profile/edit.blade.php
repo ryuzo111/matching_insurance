@@ -126,7 +126,7 @@
 		{{ Form::label('selectChildren', '子ども') }}
 	</div>
 	<div class="col-md-10">
-		{{ Form::select('children', ['' => '', 0 => '0人', 1 => '1人', 2 => '2人', 3 => '3人', 4 => '4人以上'], old('children', $user->children), ['class' => 'form-control', 'id' => 'selectChildren']) }}
+		{{ Form::select('children', config('children'), old('children', $user->children), ['class' => 'form-control', 'id' => 'selectChildren']) }}
 		@if ($errors->has('children'))
 			<span class="help-block">
 				<strong>{{ $errors->first('children') }}</strong>
@@ -165,7 +165,7 @@
 		{{ Form::label('textareaFreeComment', 'フリーコメント') }}
 	</div>
 	<div class="col-md-10">
-		{{ Form::textarea('free_comment', old('free_comment', $user->free_comment), ['class' => 'form-control', 'id' => 'textareaFreeComment']) }}
+		{{ Form::textarea('free_comment', old('free_comment', $user->free_comment), ['class' => 'form-control', 'id' => 'textareaFreeComment', 'style' => 'padding-right:12px;']) }}
 		@if ($errors->has('free_comment'))
 			<span class="help-block">
 				<strong>{{ $errors->first('free_comment') }}</strong>

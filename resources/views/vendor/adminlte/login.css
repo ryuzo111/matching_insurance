@@ -6,3 +6,9 @@
 .login-box-body, .register-box-body {
   border-radius: 10px;
 }
+
+@media screen and (max-width:340px) {
+  .login-button{
+    padding-left: 0px;
+  }
+}

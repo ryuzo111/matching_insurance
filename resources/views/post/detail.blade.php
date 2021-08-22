@@ -24,17 +24,17 @@
 		<div class="panel panel-warning">
 			<div class="panel-heading">
 				<div class="row">
-					<div class="col-xs-1">
+					<div class="col-md-1">
 					@if ($post->user->image_pass)
 						<img src="{{ asset('storage/image/' . $post->user->image_pass)}}" class="user-image" alt="">
 					@else
 						<img src="{{ asset('storage/default/default.jpeg') }}" class="user-image" alt="">
 					@endif
 					</div>
-					<div class="col-xs-2">
+					<div class="col-md-2">
 						<b><u><a href="{{ route('profile', ['id' => $post->user->id]) }}"> {{ $post->user->name }}</a></u></b>
 					</div>
-					<div class="col-xs-9">
+					<div class="col-md-9">
 						<p>{{ date('Y年m月d日H時i分', strtotime($post->created_at)) }}</p>
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 					<li style="font-size: 20px;"><span class="label label-default">タイトル：{{ $post->title }}</span></li>
 					<li style="font-size: 20px;"><span class="label label-default">カテゴリー：{{ config('trouble_type.' . $post->trouble_type) }}</span></li>
 					<li style="font-size: 20px;"><span class="label label-default">誰の？：{{ config('insurance_target.' . $post->insurance_target) }}</span></li>
-					<li style="font-size: 20px;"><span class="label label-default">保険の種類：
+					<li style="font-size: 20px;"><span class="label label-default">ほけんの種類：
 								@if ($post->interested_insurance['life'] === 1)
 									生命保険
 								@endif
@@ -109,20 +109,20 @@
 				<div class="panel panel-warning">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-xs-1">
+							<div class="col-md-1">
 							@if ($comment->user->image_pass)
 								<img src="{{ asset('storage/image/' . $comment->user->image_pass)}}" class="user-image" alt="">
 							@else
 								<img src="{{ asset('storage/default/default.jpeg') }}" class="user-image" alt="">
 							@endif
 							</div>
-							<div class="col-xs-2">
+							<div class="col-md-2">
 								<b><u><a href="{{ route('profile', ['id' => $comment->user->id]) }}"> {{ $comment->user->name }}</a></u></b>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-md-6">
 								<p>{{ date('Y年m月d日H時i分', strtotime($comment->created_at)) }}</p>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-md-3">
 								<p>いいねの数：{{ count($comment->goods )}}</p>
 							</div>
 						</div>

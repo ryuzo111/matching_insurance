@@ -3,7 +3,7 @@
         <header class="main-header">
 
             <!-- ロゴ -->
-            <a href="" class="logo"><img src="{{ asset('img/logo.PNG') }}" alt="" style="width: 128px;"></a>
+            <a href="{{ route('post.index') }}" class="logo"><img src="{{ asset('img/logo.PNG') }}" alt="" style="width: 128px;"></a>
 
             <!-- トップメニュー -->
 			<nav class="navbar navbar-static-top" role="navigation">

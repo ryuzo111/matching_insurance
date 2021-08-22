@@ -27,151 +27,151 @@
 			<h1 class="box-title">ほけんの悩み一覧</h1>
 		</div>
 		<form class="form-horizontal tag" action="{{ route('post.search') }}" method="GET">
-			<div class="form-group">
-				<label class="control-label col-md-2">悩み検索</label>
-				<div class="col-md-10">
-					<input type="text" name="word" class="form-control" value="{{ old('word') }}">
+		<div class="form-group">
+			<label class="control-label col-md-2">悩み検索</label>
+			<div class="col-md-10">
+				<input type="text" name="word" class="form-control" value="{{ old('word') }}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">カテゴリー</label>
+			<div class="col-md-10">
+				<div class="checkbox-inline checkbox-top">
+					<label>
+						<input type="checkbox" name="trouble_type[]" value="1" {{ old('trouble_type') === 1 ? 'checked' : ''}}>保険加入について
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="trouble_type[]" value="2" {{ old('trouble_type') === 2 ? 'checked' : ''}}>現在加入の保険について
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="trouble_type[]" value="3" {{ old('trouble_type') === 3 ? 'checked' : ''}}>健康告知について
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="trouble_type[]" value="4" {{ old('trouble_type') === 4 ? 'checked' : ''}}>営業マンにおすすめされた保険について
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="trouble_type[]" value="5" {{ old('trouble_type') === 5 ? 'checked' : ''}}>その他の悩み
+					</label>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2">カテゴリー</label>
-				<div class="col-md-10">
-					<div class="checkbox-inline checkbox-top">
-						<label>
-							<input type="checkbox" name="trouble_type[]" value="1" {{ old('trouble_type') === 1 ? 'checked' : ''}}>保険加入について
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="trouble_type[]" value="2" {{ old('trouble_type') === 2 ? 'checked' : ''}}>現在加入の保険について
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="trouble_type[]" value="3" {{ old('trouble_type') === 3 ? 'checked' : ''}}>健康告知について
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="trouble_type[]" value="4" {{ old('trouble_type') === 4 ? 'checked' : ''}}>営業マンにおすすめされた保険について
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="trouble_type[]" value="5" {{ old('trouble_type') === 5 ? 'checked' : ''}}>その他の悩み
-						</label>
-					</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">誰の？</label>
+			<div class="col-md-10">
+				<div class="checkbox-inline checkbox-top">
+					<label>
+						<input type="checkbox" name="insurance_target[]" value="1" {{ old('insurance_target') }}>本人
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="insurance_target[]" value="2" {{ old('insurance_target') }}>配偶者
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="insurance_target[]" value="3" {{ old('insurance_target') }}>子ども
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="insurance_target[]" value="4" {{ old('insurance_target') }}>親
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="insurance_target[]" value="5" {{ old('insurance_target') }}>祖母
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="insurance_target[]" value="6" {{ old('insurance_target') }}>祖父
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="insurance_target[]" value="7" {{ old('insurance_target') }}>孫
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="insurance_target[]" value="8" {{ old('insurance_target') }}>友人
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="insurance_target[]" value="9" {{ old('insurance_target') }}>その他
+					</label>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2">誰の？</label>
-				<div class="col-md-10">
-					<div class="checkbox-inline checkbox-top">
-						<label>
-							<input type="checkbox" name="insurance_target[]" value="1" {{ old('insurance_target') }}>本人
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="insurance_target[]" value="2" {{ old('insurance_target') }}>配偶者
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="insurance_target[]" value="3" {{ old('insurance_target') }}>子ども
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="insurance_target[]" value="4" {{ old('insurance_target') }}>親
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="insurance_target[]" value="5" {{ old('insurance_target') }}>祖母
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="insurance_target[]" value="6" {{ old('insurance_target') }}>祖父
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="insurance_target[]" value="7" {{ old('insurance_target') }}>孫
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="insurance_target[]" value="8" {{ old('insurance_target') }}>友人
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="insurance_target[]" value="9" {{ old('insurance_target') }}>その他
-						</label>
-					</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">ほけんの種類</label>
+			<div class="col-md-10">
+				<div class="checkbox-inline checkbox-top">
+					<label>
+						<input type="checkbox" name="interested_insurances[]" value="life" {{ is_array(old('interested_insurances')) && in_array('life', old('interested_insurances')) ? 'checked' : ''}}>生命保険
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="interested_insurances[]" value="medical" {{ is_array(old('interested_insurances')) && in_array('medical', old('interested_insurances')) ? 'checked' : ''}}>医療保険
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="interested_insurances[]" value="cancer" {{ is_array(old('interested_insurances')) && in_array('cancer', old('interested_insurances')) ? 'checked' : ''}}>がん保険
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="interested_insurances[]" value="pension" {{ is_array(old('interested_insurances')) && in_array('pension', old('interested_insurances')) ? 'checked' : ''}}>年金保険
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="interested_insurances[]" value="saving" {{ is_array(old('interested_insurances')) && in_array('saving', old('interested_insurances')) ? 'checked' : ''}}>貯蓄型の保険
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="interested_insurances[]" value="all_life" {{ is_array(old('interested_insurances')) && in_array('all_life', old('interested_insurances')) ? 'checked' : ''}}>終身保険
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="interested_insurances[]" value="home" {{ is_array(old('interested_insurances')) && in_array('home', old('interested_insurances')) ? 'checked' : ''}}>火災保険
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" name="interested_insurances[]" value="other" {{ is_array(old('interested_insurances')) && in_array('other', old('interested_insurances')) ? 'checked' : ''}}>その他
+					</label>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2">ほけんの種類</label>
-				<div class="col-md-10">
-					<div class="checkbox-inline checkbox-top">
-						<label>
-							<input type="checkbox" name="interested_insurances[]" value="life" {{ is_array(old('interested_insurances')) && in_array('life', old('interested_insurances')) ? 'checked' : ''}}>生命保険
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="interested_insurances[]" value="medical" {{ is_array(old('interested_insurances')) && in_array('medical', old('interested_insurances')) ? 'checked' : ''}}>医療保険
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="interested_insurances[]" value="cancer" {{ is_array(old('interested_insurances')) && in_array('cancer', old('interested_insurances')) ? 'checked' : ''}}>がん保険
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="interested_insurances[]" value="pension" {{ is_array(old('interested_insurances')) && in_array('pension', old('interested_insurances')) ? 'checked' : ''}}>年金保険
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="interested_insurances[]" value="saving" {{ is_array(old('interested_insurances')) && in_array('saving', old('interested_insurances')) ? 'checked' : ''}}>貯蓄型の保険
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="interested_insurances[]" value="all_life" {{ is_array(old('interested_insurances')) && in_array('all_life', old('interested_insurances')) ? 'checked' : ''}}>終身保険
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="interested_insurances[]" value="home" {{ is_array(old('interested_insurances')) && in_array('home', old('interested_insurances')) ? 'checked' : ''}}>火災保険
-						</label>
-					</div>
-					<div class="checkbox-inline">
-						<label>
-							<input type="checkbox" name="interested_insurances[]" value="other" {{ is_array(old('interested_insurances')) && in_array('other', old('interested_insurances')) ? 'checked' : ''}}>その他
-						</label>
-					</div>
-				</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">検索範囲</label>
+			<div class="col-md-10 form-inline">
+				<input class="form-control" name="start_time" type="text" value="{{ $start_time ?? null }}" id="datepicker1"> ～
+				<input class="form-control" name="end_time" type="text" value="{{ $end_time ?? null }}" id="datepicker2">
 			</div>
-			<div class="form-group">
-				<label class="control-label col-md-2">検索範囲</label>
-				<div class="col-md-10 form-inline">
-					<input class="form-control" name="start_time" type="text" value="{{ $start_time ?? null }}" id="datepicker1"> ～
-					<input class="form-control" name="end_time" type="text" value="{{ $end_time ?? null }}" id="datepicker2">
-				</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-2">
 			</div>
-			<div class="form-group">
-				<div class="col-md-2">
-				</div>
-				<div class="col-md-10">
-					<button type="submit" class="btn btn-warning">検索する</button>
-				</div>
+			<div class="col-md-10">
+				<button type="submit" class="btn btn-warning">検索する</button>
 			</div>
+		</div>
 		</form>
 		<div class="row">
 			<div class="col-xs-12">
@@ -226,9 +226,9 @@
 			@endforeach
 			</div>
 		</div>
-			<div class="mb-5">
-				{{ $posts->links() }}
-			</div>
+		<div class="mb-5">
+			{{ $posts->links() }}
+		</div>
 	</div>
 </div>
 <script>
