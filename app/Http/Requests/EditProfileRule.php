@@ -33,15 +33,17 @@ class EditProfileRule extends FormRequest
 
     public function messages() {
         return [
-			'image.max' => '5Mバイトより大きいサイズの画像はアップロードできません',
-			'age.between' => '年齢が正しいか確認してください',
-			'spouse.between' => '配偶者数が正しいか確認してください',
-			'sex.integer' => '性別がプルダウンから選択されていません',
-			'sex.between' => '性別がプルダウンから選択されていません',
-			'house_type.integer' => '家の種類がプルダウンから選択されていません',
-			'house_type.between' => '家の種類がプルダウンから選択されていません',
-			'pref.integer' => '都道府県がプルダウンから選択されていません',
-			'pref.between' => '都道府県がプルダウンから選択されていません',
+			'image.max' => '5Mバイトより大きいサイズの画像はアップロードできません。',
+			'name.require' => '名前は必須です。',
+			'age.between' => '年齢が正しいか確認してください。',
+			'spouse.between' => '配偶者数が正しいか確認してください。',
+			'sex.integer' => '性別がプルダウンから選択されていません。',
+			'sex.between' => '性別がプルダウンから選択されていません。',
+			'house_type.integer' => '家の種類がプルダウンから選択されていません。',
+			'house_type.between' => '家の種類がプルダウンから選択されていません。',
+			'pref.integer' => '都道府県がプルダウンから選択されていません。',
+			'pref.between' => '都道府県がプルダウンから選択されていません。',
+			'free_comment.max' => 'フリーコメントは255字以下にしてください。',
         ];
     }
 }
