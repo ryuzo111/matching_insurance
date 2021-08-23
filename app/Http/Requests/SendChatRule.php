@@ -24,7 +24,13 @@ class SendChatRule extends FormRequest
     public function rules()
     {
         return [
-            'message' => ['required', 'max:255'],            
+            'message' => ['required', 'max:255'],
+        ];
+    }
+    public function messages() {
+        return [
+            'message.required' => '入力してください。',
+			'message.max' => '255文字以内でお願いします。',
         ];
     }
 }
