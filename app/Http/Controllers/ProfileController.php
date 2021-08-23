@@ -37,11 +37,13 @@ class ProfileController extends Controller
         if (Post::where('user_id', $user->id)->exists() === false) {
             $posts = null;
         }
-        $user->posts = Post::where('user_id', $user->id)->orderBy('id', 'DESC')->take(3)->get();
+        // $user->posts = Post::where('user_id', $user->id)->orderBy('id', 'DESC')->take(3)->get();
+        $posts = Post::where('user_id', $user->id)->orderBy('id', 'DESC')->take(3)->get();
         if (Comment::where('user_id', $user->id)->exists() === false) {
             $comments = null;
         }
-        $user->comments = Comment::where('user_id', $user->id)->orderBy('id', 'DESC')->take(3)->get();
+        // $user->comments = Comment::where('user_id', $user->id)->orderBy('id', 'DESC')->take(3)->get();
+        $comments = Comment::where('user_id', $user->id)->orderBy('id', 'DESC')->take(3)->get();
         return view('profile.detail', compact('user', 'family_insurances', 'is_following', 'is_followed', 'posts', 'comments'));
     }
 
