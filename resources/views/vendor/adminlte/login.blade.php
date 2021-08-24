@@ -2,7 +2,7 @@
 
 @section('adminlte_css')
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('../resources/views/vendor/adminlte/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('resources/views/vendor/adminlte/login.css') }}">
     @yield('css')
 @stop
 
