@@ -2,10 +2,22 @@
 
 @section('adminlte_css')
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/views/vendor/adminlte/login.css') }}">
     @yield('css')
 @stop
+<style>
+.login-page{
+  background-color: #FF6615 !important;
+}
+.login-box-body, .register-box-body {
+  border-radius: 10px;
+}
 
+@media screen and (max-width:340px) {
+  .login-button{
+    padding-left: 0px !important;
+  }
+}
+</style>
 @section('body_class', 'login-page')
 
 @section('body')
