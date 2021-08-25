@@ -16,7 +16,7 @@
 		<div id="chat">
 			<div class="box-body">
 				<div class="direct-chat-messages">
-					<div id="chat-data" data-receive-user-id="{{ $receive_user->id }}" data-send-user-id="{{ Auth::id() }}" data-base-url="{{ env('BASE_URL') }}">
+					<div id="chat-data" data-receive-user-id="{{ $receive_user->id }}" data-send-user-id="{{ Auth::id() }}" data-base-url="{{ config('baseurl.baseurl') }}">
 					</div>
 					<div class="" v-for="(chat, index) in chats">
 						<div v-if="chat.receive_user_id == loginId">
