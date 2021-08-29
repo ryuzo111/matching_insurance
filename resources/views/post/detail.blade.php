@@ -176,7 +176,8 @@
 		<div class="form-group">
         {{ csrf_field() }}
         <input type="hidden" name="post_id" value="{{$post->id}}">
-		<input type="text" name="comment" class="form-control">
+		{{-- <input type="text" name="comment" class="form-control"> --}}
+		<textarea name="comment" rows="4" class="form-control"></textarea>
 		</div>
 		<div class="form-group">
 		<button class="btn btn-warning" type="submit">コメントする</button>
