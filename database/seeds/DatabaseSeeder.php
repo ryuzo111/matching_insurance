@@ -12,30 +12,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserTableSeeder::class);
-        $this->call(AdminTableSeeder::class);
-        $this->call(PostTableSeeder::class);
-        $this->call(CommentTableSeeder::class);
-        $this->call(Family_insuranceTableSeeder::class);
-        $this->call(Interested_insuranceTableSeeder::class);
-        $this->call(RelationshipTableSeeder::class);
+        // $this->call(UserTableSeeder::class);
+        // $this->call(AdminTableSeeder::class);
+        // $this->call(PostTableSeeder::class);
+        // $this->call(CommentTableSeeder::class);
+        // $this->call(Family_insuranceTableSeeder::class);
+        // $this->call(Interested_insuranceTableSeeder::class);
+        // $this->call(RelationshipTableSeeder::class);
 
-        // factory(App\Models\Post::class, 15)->create();
-        // factory(App\Models\Comment::class, 15)->create();
-        factory(App\Models\Good::class, 15)->create();
-        //factory(App\Models\Relationship::class, 15)->create();
-        factory(App\Models\Contact::class, 15)->create();
+        // // factory(App\Models\Post::class, 15)->create();
+        // // factory(App\Models\Comment::class, 15)->create();
+        // factory(App\Models\Good::class, 15)->create();
+        // //factory(App\Models\Relationship::class, 15)->create();
+        // factory(App\Models\Contact::class, 15)->create();
 
-        //postsテーブルとusersテーブルを3件作成する
-        $posts = factory(App\Models\Post::class, 3)->create();
-        //interested_insurancesテーブルを作成
-        $posts->each(function ($post) {
-            factory(App\Models\InterestedInsurance::class, 1)->create(['post_id' => $post->id]);
-        });
+        // //postsテーブルとusersテーブルを3件作成する
+        // $posts = factory(App\Models\Post::class, 3)->create();
+        // //interested_insurancesテーブルを作成
+        // $posts->each(function ($post) {
+        //     factory(App\Models\InterestedInsurance::class, 1)->create(['post_id' => $post->id]);
+        // });
 
-        //作成した$postに対してコメントをそれぞれ３件作成する。キーを指定することで属性をオーバーライドできる
-        $posts->each(function ($post) {
-            factory(App\Models\Comment::class, 3)->create(['post_id' => $post->id, 'user_id' => $post->user_id]);
-        });
+        // //作成した$postに対してコメントをそれぞれ３件作成する。キーを指定することで属性をオーバーライドできる
+        // $posts->each(function ($post) {
+        //     factory(App\Models\Comment::class, 3)->create(['post_id' => $post->id, 'user_id' => $post->user_id]);
+        // });
     }
 }

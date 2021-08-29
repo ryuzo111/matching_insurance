@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
 	<meta charset="utf-8">
 	<!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -9,6 +9,18 @@
 	<link href="{{ asset('/img/favicon.ico') }}" rel="icon">
 	<link href="{{ asset('/img/apple-touch-icon.png') }}" rel="apple-touch-icon" sizes="180x180">
 	<link href="{{ asset('/img/android-touch-icon.png') }}" type="image/png" rel="icon" sizes="192x192">
+
+	<!-- og設定 -->
+	<meta property="og:image" content="{{asset('/img/og.png')}}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.hoken-talk.net/">
+	<meta property="og:title" content="ほけんとーく">
+	<meta property="og:site_name" content="ほけんとーく" />
+	<meta property="og:description" content="保険のアドバイスをもらうなら「ほけんとーく」" />
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site" content="@yagiyagi44" />
+	<meta name="twitter:player" content="@yagiyagi44" />
+
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->

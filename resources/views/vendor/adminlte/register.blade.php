@@ -2,9 +2,20 @@
 
 @section('adminlte_css')
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('../resources/views/vendor/adminlte/register.css') }}">
     @yield('css')
 @stop
+<style>
+.register-page{
+  background-color: #FF6615 !important;
+}
+.register-box-body, .register-box-body {
+  border-radius: 10px;
+}
+.register-logo a, .register-logo a {
+  color: #160700 !important;
+  font-size: 60px;
+}
+</style>
 
 @section('body_class', 'register-page')
 
