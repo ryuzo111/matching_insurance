@@ -29,6 +29,9 @@ slack/trello/調整くん/diagrams </br>
 ## ER図
 ![ER図](https://github.com/ryuzo111/matching_insurance/blob/master/ER.png)
 
+<img src="{{ asset('/img/mockup2.png') }}" alt="Image" class="phone-1" data-aos="fade-right">
+
+
 ## インストール方法
 
 WEBアプリのためインストール不要</br>
