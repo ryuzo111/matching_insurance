@@ -157,8 +157,8 @@
 			<div class="form-group">
 				<label class="control-label col-md-2">検索範囲</label>
 				<div class="col-md-10 form-inline">
-					<input class="form-control" name="start_time" type="text" value="{{ $start_time ?? null }}" id="datepicker1"> ～
-					<input class="form-control" name="end_time" type="text" value="{{ $end_time ?? null }}" id="datepicker2">
+					<input class="form-control" name="start_time" type="date" value="{{ $start_time ?? null }}"> ～
+					<input class="form-control" name="end_time" type="date" value="{{ $end_time ?? null }}">
 				</div>
 			</div>
 			<div class="form-group">
