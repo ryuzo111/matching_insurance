@@ -21,7 +21,7 @@
 ## 使用技術/使用ツール
 
 php7/Laravel5.5
-HTML5/CSS/Bootstrap/javascript/ajax </br>
+HTML5/CSS/Bootstrap/javascript</br>
 mysql </br>
 git/GitHub/Linux </br> 
 slack/trello/調整くん/diagrams </br>
