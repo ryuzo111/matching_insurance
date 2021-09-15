@@ -32,10 +32,12 @@ slack/trello/調整くん/diagrams </br>
 ## ER図
 ![ER図](https://github.com/ryuzo111/matching_insurance/blob/master/ER.png)
 
-## インストール方法
+## URL
 
-WEBアプリのためインストール不要</br>
-[ほけんとーく](https://www.hoken-talk.net/)
+
+[ほけんとーく](https://www.hoken-talk.net/) </br>
+※WEBアプリのためインストール不要</br>
+[Qita　解説記事](https://qiita.com/yagiryu/items/f86b505cc28fe55cc054) </br>
 
 ## 操作方法
 
