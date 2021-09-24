@@ -33,7 +33,7 @@ slack/trello/調整くん/diagrams </br>
 ![ER図](https://github.com/ryuzo111/matching_insurance/blob/master/ER.png)
 
 
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/default.jpeg)
+
 ## URL
 
 
@@ -45,6 +45,7 @@ slack/trello/調整くん/diagrams </br>
 
 ### 全ユーザー共通（ログイン状況を問わない）　
 ①ホーム画面から悩み投稿の一覧を確認することができる。　</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/1readme.png)
 ②投稿一覧ページから投稿をクリックしていただくと、悩み投稿に対する解決の提案を確認することができる。　</br>
 ③ユーザー名をクリックしていただくとプロフィールページに遷移して、ユーザー情報を確認することができる。　</br>
 ④メニューバーからランキングページに遷移して、週間提案コメントランキングと、週間ユーザーランキング（どちらもコメントに対するいいねの数による）　</br>
