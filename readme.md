@@ -47,23 +47,33 @@ slack/trello/調整くん/diagrams </br>
 ①ホーム画面から悩み投稿の一覧を確認することができる。　</br>
 ![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/1readme.png)
 ②投稿一覧ページから投稿をクリックしていただくと、悩み投稿に対する解決の提案を確認することができる。　</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/2readme.png)
 ③ユーザー名をクリックしていただくとプロフィールページに遷移して、ユーザー情報を確認することができる。　</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/3readme.png)
 ④メニューバーからランキングページに遷移して、週間提案コメントランキングと、週間ユーザーランキング（どちらもコメントに対するいいねの数による）　</br>
 ⑤お問い合わせページから運営に問い合わせることができる。</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/4readme.png)
 ⑥禁止事項ページに遷移して禁止事項の一覧を見ることができる。</br>
 
 ### ログインユーザーのみ　
 ①悩み投稿ページに遷移し、悩み投稿を行える。（削除と編集も可）　</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/5readme.png)
 ②ログインユーザーのプロフィールページにてプロフィールを編集することができる。　</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/6readme.png)
 ③他ユーザーのプロフィールページからフォローとフォロー解除することができる。　</br>
 ④各ユーザーのプロフィールページからフォロー一覧ページに遷移することができる。　</br>
 ⑤各ユーザーのプロフィールページからフォロワー一覧ページに遷移することができる。　</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/7readme.png)
 ⑥他ユーザーのプロフィールページからチャットページに遷移し、個人チャットすることができる。（1度チャットを行ったユーザーはチャット相手選択ページに表示されます）　</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/8readme.png)
 ⑦悩み投稿に対してコメントをすることができる。(削除と編集も可）　</br>
 ⑧コメントに対して「いいね」をすることができる。　</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/9readme.png)
 ⑨フォロー者の投稿とコメントを一覧で見ることができる。</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/10readme.png)
 ⑩パスワードを変更できる。</br>
 ⑪プロフィールページから家族が加入している保険の情報を追加できる。</br>
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/11readme.png)
 
 　※ご不明点はメニューバーから遷移できるお問い合わせページからお願い致します。　</br>
 　※禁止事項を必ずご確認いただいた上でのご利用をお願いいたします。</br>
