@@ -57,29 +57,42 @@ slack/trello/調整くん/diagrams </br>
 ![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/3readme.png)<br>
 
 ④メニューバーからランキングページに遷移して、週間提案コメントランキングと、週間ユーザーランキング（どちらもコメントに対するいいねの数による）　</br>
+
 ⑤お問い合わせページから運営に問い合わせることができる。</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/4readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/4readme.png)<br>
+
 ⑥禁止事項ページに遷移して禁止事項の一覧を見ることができる。</br>
 
 ### ログインユーザーのみ　
 ①悩み投稿ページに遷移し、悩み投稿を行える。（削除と編集も可）　</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/5readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/5readme.png)<br>
 ②ログインユーザーのプロフィールページにてプロフィールを編集することができる。　</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/6readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/6readme.png)<br>
+
 ③他ユーザーのプロフィールページからフォローとフォロー解除することができる。　</br>
+
 ④各ユーザーのプロフィールページからフォロー一覧ページに遷移することができる。　</br>
+
 ⑤各ユーザーのプロフィールページからフォロワー一覧ページに遷移することができる。　</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/7readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/7readme.png)<br>
+
 ⑥他ユーザーのプロフィールページからチャットページに遷移し、個人チャットすることができる。（1度チャットを行ったユーザーはチャット相手選択ページに表示されます）　</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/8readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/8readme.png)<br>
+※自身の発信したチャットについては削除と編集をすることが可能です。<br>
+　　チャットの右下の青いボタンを押すことで編集する。赤いゴミ箱ボタンを押すことにより削除が可能。<br>
+  
 ⑦悩み投稿に対してコメントをすることができる。(削除と編集も可）　</br>
+
 ⑧コメントに対して「いいね」をすることができる。　</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/9readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/9readme.png)<br>
+
 ⑨フォロー者の投稿とコメントを一覧で見ることができる。</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/10readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/10readme.png)<br>
+
 ⑩パスワードを変更できる。</br>
+
 ⑪プロフィールページから家族が加入している保険の情報を追加できる。</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/11readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/11readme.png)<br>
 
 　※ご不明点はメニューバーから遷移できるお問い合わせページからお願い致します。　</br>
 　※禁止事項を必ずご確認いただいた上でのご利用をお願いいたします。</br>
