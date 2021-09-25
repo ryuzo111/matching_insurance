@@ -46,10 +46,16 @@ slack/trello/調整くん/diagrams </br>
 ### 全ユーザー共通（ログイン状況を問わない）　
 ①ホーム画面から悩み投稿の一覧を確認することができる。　</br>
 ![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/1readme.png)
+・左上のボタンをタップするとホーム画面に遷移します。<br>
+・各ページに10投稿まで表示しております。<br>
+・検索窓があり、興味がある投稿に絞って投稿を探すことができます。<br>
+
 ②投稿一覧ページから投稿をクリックしていただくと、悩み投稿に対する解決の提案を確認することができる。　</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/2readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/2readme.png)<br>
+
 ③ユーザー名をクリックしていただくとプロフィールページに遷移して、ユーザー情報を確認することができる。　</br>
-![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/3readme.png)
+![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/3readme.png)<br>
+
 ④メニューバーからランキングページに遷移して、週間提案コメントランキングと、週間ユーザーランキング（どちらもコメントに対するいいねの数による）　</br>
 ⑤お問い合わせページから運営に問い合わせることができる。</br>
 ![!](https://github.com/ryuzo111/matching_insurance/blob/master/storage/app/public/default/4readme.png)
