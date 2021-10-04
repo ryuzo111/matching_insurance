@@ -23,7 +23,7 @@
 
 ## 使用技術/使用ツール
 
-php7/Laravel5.5</br>
+php7/Laravel5.5
 HTML5/CSS/Bootstrap/javascript</br>
 mysql </br>
 git/GitHub/Linux </br> 
