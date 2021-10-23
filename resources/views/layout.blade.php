@@ -37,9 +37,9 @@
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- Date time picker -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('../bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
-	<script type="text/javascript" src="{{ asset('../bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('../bootstrap-datepicker/dist/locales/bootstrap-datepicker.ja.min.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ asset('../bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.min.css') }}">
+	<script type="text/javascript" src="{{ asset('../bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('../bootstrap-datepicker-1.9.0-dist/locales/bootstrap-datepicker.ja.min.js') }}"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJLLPCBFCQ"></script>
 	<script>
